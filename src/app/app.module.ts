@@ -3,16 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
-import {SidenavDrawerOverviewExample} from './sidenav-drawer-overview-example/sidenav-drawer-overview-example';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { AppComponent } from './app.component';
+import { SidenavMainSimple } from './sidenav/sidenav.component';
+import { SidenavInner } from './sidenav/sidenav-inner/sidenav-inner.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavDrawerOverviewExample
+    SidenavMainSimple,
+    SidenavInner
   ],
   imports: [
     BrowserModule,
