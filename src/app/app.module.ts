@@ -5,17 +5,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
-import { SidenavMainSimple } from './sidenav/sidenav.component';
-import { SidenavInner } from './sidenav/sidenav-inner/sidenav-inner.component';
+import { Test } from './test/test.component';
+import { SidenavInner } from './test/sidenav-inner/sidenav-inner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavMainSimple,
+    Test,
     SidenavInner
+   
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { SidenavInner } from './sidenav/sidenav-inner/sidenav-inner.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
