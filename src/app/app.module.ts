@@ -8,15 +8,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
-import { Test } from './test/test.component';
-import { SidenavInner } from './test/sidenav-inner/sidenav-inner.component';
+import { MainBlockComponent } from './components/main-block/main-block.component';
+import { HeaderComponent } from './layout/header/header.component';
+//import { TestComponent } from './test/test.component';
+//import { SidenavInner } from './test/sidenav-inner/sidenav-inner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Test,
-    SidenavInner
+    HeaderComponent,
+    MainBlockComponent
    
   ],
   imports: [
