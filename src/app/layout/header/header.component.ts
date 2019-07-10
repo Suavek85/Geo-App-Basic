@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   events: string[] = [];
   opened: boolean;
+  appName: string = '';
+  constructor() {
+    setTimeout(() => { this.appName = 'Beta' }, 1500)
+  }
 }

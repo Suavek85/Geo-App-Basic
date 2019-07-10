@@ -1,23 +1,25 @@
+ <!-- SIDENAV WRAPPER -->
 <mat-sidenav-container class="example-container">
-  <mat-sidenav
-    #sidenav
-    mode="side"
-    [(opened)]="opened"
-    (opened)="events.push('open!')"
-    (closed)="events.push('close!')"
-  >
+  
+  <!-- SIDE NAV -->
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     Sidenav content
   </mat-sidenav>
 
+  <!-- MAIN CONTENT -->
   <mat-sidenav-content>
+    <!-- NAV HEADER -->
+    <mat-toolbar color="primary">
+      <span>Geo App Basic {{ appName }}</span>
+      <!-- SIDE NAV BUTTON -->
+      <div class="sidenav-content">
+        <button style="width:20px; height: 20px" type="button"  (click)="sidenav.toggle()">
+        </button>
+      </div>
+    </mat-toolbar>
+    <!-- CONTENT-->
     <main-block></main-block>
-    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-    <p>
-      <button mat-button (click)="sidenav.toggle()">Toggle</button>
-    </p>
-    <p>Events:</p>
-    <div class="example-events">
-      <div *ngFor="let e of events">{{ e }}</div>
-    </div>
+    <signup-form></signup-form>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

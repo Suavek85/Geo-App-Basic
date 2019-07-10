@@ -1,0 +1,15 @@
+.location {
+    position: relative;
+    width: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
