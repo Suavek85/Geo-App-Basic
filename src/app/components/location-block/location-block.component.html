@@ -1,7 +1,13 @@
+<!-- ADDING LOCATIONS-->
+
 <h2 style="text-align:center">STEP 3 - Add locations</h2>
 <p *ngIf="locations.length">Well done! Keep adding!</p>
 <input type="text" [(ngModel)]="locationName" />
 <button (click)="addLocation()">Add Location</button>
 <!-- <div *ngFor="let location of locations">{{ location }}</div> -->
 <location-item (locationClicked)="onRemoveLocation(location)" *ngFor="let location of locations" [locationName]="location"></location-item>
+
+<!-- FORMS
+the above can also be achieved with forms
+-->
 

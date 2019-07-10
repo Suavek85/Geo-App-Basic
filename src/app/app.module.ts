@@ -13,20 +13,19 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 import { AppComponent } from './app.component';
-import { MainBlockComponent } from './components/main-block/main-block.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { SignupForm } from './components/signup-form/signup-form.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { LocationItem } from './components/location/location.component';
 
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { LocationBlockComponent } from './components/location-block/location-block.component';
+import { LocationItem } from './components/location/location.component';
+import { LocationsService } from "./components/location-block/location-block.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainBlockComponent,
     FooterComponent,
-    SignupForm,
+    LocationBlockComponent,
     LocationItem
 
   ],
@@ -44,7 +43,7 @@ import { LocationItem } from './components/location/location.component';
     MatSelectModule
     
   ],
-  providers: [],
+  providers: [LocationsService],
   bootstrap: [AppComponent]
 })
 

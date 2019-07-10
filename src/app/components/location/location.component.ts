@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { LocationsService } from '../location-block/location-block.service';
 
 @Component({
   selector: "location-item",
@@ -9,9 +10,10 @@ export class LocationItem implements OnInit {
   @Input() locationName: string;
   @Output() locationClicked = new EventEmitter();
 
-  constructor() {}
+  constructor(private locationsService: LocationsService) {}
   ngOnInit() {}
   onLocationClick() {
-    this.locationClicked.emit();
+    //this.locationClicked.emit();
+    this.locationsService.deleteLocation(this.locationName)
   }
 }
