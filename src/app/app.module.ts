@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -24,6 +25,7 @@ import { LocationsService } from "./components/location-block/location-block.ser
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     FooterComponent,
     LocationBlockComponent,
     LocationItem
@@ -35,12 +37,15 @@ import { LocationsService } from "./components/location-block/location-block.ser
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+
+
     MatSidenavModule,
     MatCheckboxModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+   
     
   ],
   providers: [LocationsService],
