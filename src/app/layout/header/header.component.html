@@ -10,15 +10,18 @@
   <mat-sidenav-content>
     <!-- NAV HEADER -->
     <mat-toolbar color="primary">
-      <span>Geo App Basic {{ appName }}</span>
-      <!-- SIDE NAV BUTTON -->
-      <div class="sidenav-content">
-        <button style="width:20px; height: 20px" type="button"  (click)="sidenav.toggle()">
-        </button>
+      <!-- TOGGLE SIDE MENU BUTTON -->
+      <div style="cursor: pointer" type="button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
       </div>
+      <span>Geo App Basic {{ appName }}</span>
+      <!-- ROUTER -->
+      <a routerLink="/">Home</a>
+      <a routerLink="/locations">Locations</a>
+      
     </mat-toolbar>
     <!-- CONTENT-->
-    <location-block></location-block>
+    <router-outlet></router-outlet> 
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

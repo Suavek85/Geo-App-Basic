@@ -1,9 +1,12 @@
 import { NgModule} from '@angular/core';
+import { MaterialModule} from './material.module';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,6 +40,7 @@ import { LocationsService } from "./components/location-block/location-block.ser
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MaterialModule,
 
 
     MatSidenavModule,
