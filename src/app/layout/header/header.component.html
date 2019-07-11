@@ -1,27 +1,26 @@
- <!-- SIDENAV WRAPPER -->
+<!-- SIDENAV WRAPPER -->
 <mat-sidenav-container class="example-container">
-  
   <!-- SIDE NAV -->
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    Sidenav content
+    <div class="routes-wrapper">
+      <!-- ROUTER -->
+      <button mat-button><a routerLink="/">Home</a></button>
+      <button mat-button ><a routerLink="/locations">Locations</a></button>
+    </div>
   </mat-sidenav>
 
   <!-- MAIN CONTENT -->
   <mat-sidenav-content>
     <!-- NAV HEADER -->
     <mat-toolbar color="primary">
+      <span>Geo App Basic {{ appName }}</span>
       <!-- TOGGLE SIDE MENU BUTTON -->
       <button type="button" mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Geo App Basic {{ appName }}</span>
-      <!-- ROUTER -->
-      <a routerLink="/">Home</a>
-      <a routerLink="/locations">Locations</a>
-      
     </mat-toolbar>
     <!-- CONTENT-->
-    <router-outlet></router-outlet> 
+    <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
