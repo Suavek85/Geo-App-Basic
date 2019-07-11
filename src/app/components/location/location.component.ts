@@ -8,7 +8,7 @@ import { LocationsService } from '../location-block/location-block.service';
 })
 export class LocationItem implements OnInit {
   @Input() locationName: string;
-  @Output() locationClicked = new EventEmitter();
+  //@Output() locationClicked = new EventEmitter();
 
   constructor(private locationsService: LocationsService) {}
   ngOnInit() {}

@@ -11,9 +11,9 @@
     <!-- NAV HEADER -->
     <mat-toolbar color="primary">
       <!-- TOGGLE SIDE MENU BUTTON -->
-      <div style="cursor: pointer" type="button" mat-icon-button (click)="sidenav.toggle()">
+      <button type="button" mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
-      </div>
+      </button>
       <span>Geo App Basic {{ appName }}</span>
       <!-- ROUTER -->
       <a routerLink="/">Home</a>

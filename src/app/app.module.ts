@@ -7,17 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LocationBlockComponent } from './components/location-block/location-block.component';
@@ -32,7 +24,6 @@ import { LocationsService } from "./components/location-block/location-block.ser
     FooterComponent,
     LocationBlockComponent,
     LocationItem
-
   ],
   imports: [
     BrowserModule,
@@ -40,17 +31,7 @@ import { LocationsService } from "./components/location-block/location-block.ser
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
-
-
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-   
-    
+    MaterialModule 
   ],
   providers: [LocationsService],
   bootstrap: [AppComponent]
