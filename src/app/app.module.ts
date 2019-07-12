@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LocationBlockComponent } from './components/location-block/location-block.component';
+import { StepperBlockComponent } from './components/stepper-block/stepper-block.component';
 import { LocationItem } from './components/location/location.component';
 import { LocationsService } from "./components/location-block/location-block.service";
 
@@ -23,7 +24,8 @@ import { LocationsService } from "./components/location-block/location-block.ser
     HomeComponent,
     FooterComponent,
     LocationBlockComponent,
-    LocationItem
+    LocationItem,
+    StepperBlockComponent
   ],
   imports: [
     BrowserModule,

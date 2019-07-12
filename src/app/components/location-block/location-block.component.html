@@ -3,7 +3,7 @@
 <h2 style="text-align:center">STEP 3 - Add locations</h2>
 <p *ngIf="locations.length">Well done! Keep adding!</p>
 <input type="text" [(ngModel)]="locationName" />
-<button mat-button color="accent" (click)="addLocation()">Add Location</button>
+<button class='button__add-locations' mat-flat-button color="accent" (click)="addLocation()">Add Location</button>
 <!-- <div *ngFor="let location of locations">{{ location }}</div> -->
 <location-item  *ngFor="let location of locations" [locationName]="location"></location-item>
 
