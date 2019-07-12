@@ -2,6 +2,7 @@ import { NgModule} from '@angular/core';
 import { MaterialModule} from './material.module';
 
 import { BrowserModule } from '@angular/platform-browser';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +34,8 @@ import { LocationsService } from "./components/location-block/location-block.ser
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule 
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [LocationsService],
   bootstrap: [AppComponent]

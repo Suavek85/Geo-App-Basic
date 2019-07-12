@@ -1,19 +1,38 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step label="Step 1">
-    Content 1
+
+
+
+    <section class="signup-form">
+      <form fxLayout="column" >
+          <ng-template matStepLabel>Fill out your email and password</ng-template>
+        <mat-form-field>
+            <input matInput type='email' placeholder="Your email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type='password' placeholder="Your password">
+        </mat-form-field>
+      </form>
+    </section>
+    
+    
+    
+    
+    
     <div>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Step 2">
-    Content 2
+      <ng-template matStepLabel>Set up your Home</ng-template>
     <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
   </mat-step>
   <mat-step label="Step 3">
-    Content 3
+      <ng-template matStepLabel>Done</ng-template>
+      You have successfully created a Geo-Profile!
     <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
