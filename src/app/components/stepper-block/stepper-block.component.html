@@ -1,13 +1,18 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step label="Step 1">
+
+  <!-- STEP 1 -->
+  <mat-step  label="Step 1">
     <section class="signup-form">
       <form
         class="form-wrapper"
         fxLayout="column"
+        fxLayoutGap="10px"
         #f="ngForm"
         (ngSubmit)="onSubmit(f)"
+     
       >
-        <ng-template matStepLabel>Fill out your email and password</ng-template>
+        <ng-template matStepLabel>Fill out your details</ng-template>
+
         <!-- EMAIL-->
         <mat-form-field>
           <input
@@ -16,9 +21,8 @@
             placeholder="Your email"
             ngModel
             name="email"
-            email
-            required
             #emInput="ngModel"
+            required
           />
           <mat-error *ngIf="emInput.hasError('required')"
             >Field must not be empty.</mat-error
@@ -27,6 +31,7 @@
             >Email format is invalid.</mat-error
           >
         </mat-form-field>
+
         <!-- PASSWORD-->
         <mat-form-field hintLabel="Minimum 6 characters">
           <input
@@ -35,13 +40,14 @@
             placeholder="Your password"
             ngModel
             name="password"
-            required
             minlength="6"
             #pwInput="ngModel"
+            required
           />
           <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
           <mat-error>Has to be minimum 6 characters long</mat-error>
         </mat-form-field>
+
         <!-- DATEPICKER -->
         <mat-form-field>
           <input
@@ -49,6 +55,9 @@
             [matDatepicker]="picker"
             [max]="maxDate"
             placeholder="Your birthdate"
+            ngModel
+            name="birthday"
+            required
           />
           <mat-datepicker-toggle
             matSuffix
@@ -56,26 +65,26 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <!--CHECK BOX-->
-        <mat-form-field>
 
-        </mat-form-field>
+        <!--CHECK BOX-->
+        <mat-checkbox ngModel name="agree" color="primary" required>Agree to terms</mat-checkbox>
+
         <!--SUBMIT BUTTON-->
         <button
           class="button__submit"
           type="submit"
           mat-flat-button
+          matStepperNext
           color="primary"
+          [disabled]="f.invalid"
         >
-          Submit
+          Next
         </button>
       </form>
     </section>
-
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
   </mat-step>
+
+<!-- STEP 2-->
   <mat-step label="Step 2">
     <ng-template matStepLabel>Set up your Home</ng-template>
     <div>
@@ -83,9 +92,14 @@
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
+
+  <!-- STEP 3-->
   <mat-step label="Step 3">
     <ng-template matStepLabel>Done</ng-template>
     You have successfully created a Geo-Profile!
+    <div>
+      <button mat-flat-button><a routerLink="/locations">Start adding your locations</a></button>
+    </div>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>

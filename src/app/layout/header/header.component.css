@@ -1,3 +1,16 @@
+mat-sidenav-container, mat-sidenav, mat-sidenav-content {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .example-container {
   position: absolute;
   top: 0;
@@ -14,8 +27,9 @@
 }
 
 .routes-wrapper {
-  display: flex;
-  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 
