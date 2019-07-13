@@ -2,13 +2,13 @@ import { NgModule} from '@angular/core';
 import { MaterialModule} from './material.module';
 
 import { BrowserModule } from '@angular/platform-browser';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+//DECLARATIONS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './layout/header/header.component';

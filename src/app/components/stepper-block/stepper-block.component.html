@@ -1,41 +1,94 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step label="Step 1">
-
-
-
     <section class="signup-form">
-      <form fxLayout="column" >
-          <ng-template matStepLabel>Fill out your email and password</ng-template>
+      <form
+        class="form-wrapper"
+        fxLayout="column"
+        #f="ngForm"
+        (ngSubmit)="onSubmit(f)"
+      >
+        <ng-template matStepLabel>Fill out your email and password</ng-template>
+        <!-- EMAIL-->
         <mat-form-field>
-            <input matInput type='email' placeholder="Your email">
+          <input
+            matInput
+            type="email"
+            placeholder="Your email"
+            ngModel
+            name="email"
+            email
+            required
+            #emInput="ngModel"
+          />
+          <mat-error *ngIf="emInput.hasError('required')"
+            >Field must not be empty.</mat-error
+          >
+          <mat-error *ngIf="!emInput.hasError('required')"
+            >Email format is invalid.</mat-error
+          >
         </mat-form-field>
+        <!-- PASSWORD-->
+        <mat-form-field hintLabel="Minimum 6 characters">
+          <input
+            matInput
+            type="password"
+            placeholder="Your password"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+            #pwInput="ngModel"
+          />
+          <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+          <mat-error>Has to be minimum 6 characters long</mat-error>
+        </mat-form-field>
+        <!-- DATEPICKER -->
         <mat-form-field>
-            <input matInput type='password' placeholder="Your password">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [max]="maxDate"
+            placeholder="Your birthdate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <!--CHECK BOX-->
+        <mat-form-field>
+
+        </mat-form-field>
+        <!--SUBMIT BUTTON-->
+        <button
+          class="button__submit"
+          type="submit"
+          mat-flat-button
+          color="primary"
+        >
+          Submit
+        </button>
       </form>
     </section>
-    
-    
-    
-    
-    
+
     <div>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Step 2">
-      <ng-template matStepLabel>Set up your Home</ng-template>
+    <ng-template matStepLabel>Set up your Home</ng-template>
     <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
   <mat-step label="Step 3">
-      <ng-template matStepLabel>Done</ng-template>
-      You have successfully created a Geo-Profile!
+    <ng-template matStepLabel>Done</ng-template>
+    You have successfully created a Geo-Profile!
     <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
   </mat-step>
 </mat-vertical-stepper>
