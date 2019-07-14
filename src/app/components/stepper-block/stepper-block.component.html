@@ -1,7 +1,6 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
-
   <!-- STEP 1 -->
-  <mat-step  label="Step 1">
+  <mat-step>
     <section class="signup-form">
       <form
         class="form-wrapper"
@@ -9,7 +8,6 @@
         fxLayoutGap="10px"
         #f="ngForm"
         (ngSubmit)="onSubmit(f)"
-     
       >
         <ng-template matStepLabel>Fill out your details</ng-template>
 
@@ -67,7 +65,9 @@
         </mat-form-field>
 
         <!--CHECK BOX-->
-        <mat-checkbox ngModel name="agree" color="primary" required>Agree to terms</mat-checkbox>
+        <mat-checkbox ngModel name="agree" color="primary" required
+          >Agree to terms</mat-checkbox
+        >
 
         <!--SUBMIT BUTTON-->
         <button
@@ -78,19 +78,40 @@
           color="primary"
           [disabled]="f.invalid"
         >
-          Next
+          Submit
+        </button>
+        <!--SKIP BUTTON-->
+        <button
+          class="button__submit"
+          mat-flat-button
+          matStepperNext
+          color="primary"
+        >
+          Skip
         </button>
       </form>
     </section>
   </mat-step>
 
-<!-- STEP 2-->
-  <mat-step label="Step 2">
-    <ng-template matStepLabel>Set up your Home</ng-template>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+  <!-- STEP 2-->
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Set up your Home</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Home"
+          formControlName="secondCtrl"
+          required
+        />
+        <mat-error >Mininum 2 and max 7 characters long</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
   </mat-step>
 
   <!-- STEP 3-->
@@ -98,7 +119,9 @@
     <ng-template matStepLabel>Done</ng-template>
     You have successfully created a Geo-Profile!
     <div>
-      <button mat-flat-button><a routerLink="/locations">Start adding your locations</a></button>
+      <button mat-flat-button>
+        <a routerLink="/locations">Start adding your locations</a>
+      </button>
     </div>
     <div>
       <button mat-button matStepperPrevious>Back</button>

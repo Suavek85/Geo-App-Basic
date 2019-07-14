@@ -1,0 +1,36 @@
+<!-- NAV HEADER -->
+<mat-toolbar color="primary">
+    <a style="color: white" routerLink="/">Geo App Basic {{ appName }}</a>
+
+    <!-- TOGGLE SIDE MENU BUTTON -->
+    <div fxHide.gt-xs>
+      <button type="button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <ul
+      class="routes-wrapper"
+      fxFlex
+      fxLayout
+      fxLayoutGap="20px"
+      fxLayoutAlign="flex-end"
+      fxHide.xs
+    >
+      <li>
+        <button mat-button><a routerLink="/">Home</a></button>
+      </li>
+      <li>
+        <button mat-button><a routerLink="/locations">Dashboard</a></button>
+      </li>
+      <li>
+        <button mat-button><a routerLink="/stepper">New Profile</a></button>
+      </li>
+      <li>
+        <button mat-button><a routerLink="/">Sign In</a></button>
+      </li>
+      <li>
+        <button mat-button>Sign Out</button>
+      </li>
+    </ul>
+  </mat-toolbar>

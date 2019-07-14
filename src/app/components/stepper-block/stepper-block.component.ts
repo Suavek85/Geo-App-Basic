@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators, NgForm } from "@angular/forms";
   styleUrls: ["./stepper-block.component.css"]
 })
 export class StepperBlockComponent implements OnInit {
-  //isLinear = false;
-  //firstFormGroup: FormGroup;
+  isLinear = true;
+  secondFormGroup: FormGroup;
   maxDate;
 
   constructor(private _formBuilder: FormBuilder) {}
@@ -16,12 +16,11 @@ export class StepperBlockComponent implements OnInit {
   ngOnInit() {
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
-
-    //this.firstFormGroup = this._formBuilder.group({
-      //firstCtrl: ["", Validators.required],
-      //secondCtrl: ["", Validators.required],
-      //thirdCtrl: ["", Validators.required]
-    //});
+    this.secondFormGroup = this._formBuilder.group({
+        secondCtrl: ["", [Validators.minLength(3),Validators.maxLength(7) ]]
+      }
+    );
+    console.log(this.secondFormGroup)
   }
 
   onSubmit(form: NgForm) {
