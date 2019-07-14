@@ -9,6 +9,7 @@ import { Subscription } from "rxjs";
 })
 
 export class LocationBlockComponent implements OnInit, OnDestroy {
+  panelOpenState = false;
   locationName = "";
   locations = [];
   private locationsSubscription: Subscription;
