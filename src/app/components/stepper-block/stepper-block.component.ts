@@ -20,7 +20,6 @@ export class StepperBlockComponent implements OnInit {
         secondCtrl: ["", [Validators.minLength(3),Validators.maxLength(7) ]]
       }
     );
-    console.log(this.secondFormGroup)
   }
 
   onSubmit(form: NgForm) {

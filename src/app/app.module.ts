@@ -19,6 +19,7 @@ import { LocationItem } from './components/location/location.component';
 import { LocationsService } from "./components/location-block/location-block.service";
 import { NavHeaderComponent } from "./components/nav-header/nav-header.component";
 import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component"
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.c
     LocationItem,
     StepperBlockComponent,
     NavHeaderComponent,
-    NavSideListComponent
+    NavSideListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

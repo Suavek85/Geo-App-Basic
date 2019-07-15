@@ -1,27 +1,44 @@
-# GeoAppBasic
+# Geo App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
+> Angular desktop app for calculating distances between your locations and more. JUST STARTED, IN PROGRESS.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [General info](#general-info)
 
-## Code scaffolding
+- [Features](#features)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Technologies](#technologies)
 
-## Build
+- [Issues](#issues)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- [Status](#status)
 
-## Running unit tests
+## General info
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Angular desktop app built with Angular Material Design.
 
-## Running end-to-end tests
+My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch. ![🔨](https://mail.google.com/mail/e/1f528)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Features
 
-## Further help
+- signin/signup (using both reactive and template driven forms),
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- adding locations, calculating distances to all locations from the current location etc.
+
+- will use Microsoft’s Bing Maps API.
+
+
+## Technologies
+
+- HTML, CSS, Typescript.
+
+## Issues
+
+- desktop use only,
+
+- IN PROGRESS.
+
+## Status
+
+The project is in progress.
