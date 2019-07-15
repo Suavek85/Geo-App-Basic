@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: 'header.component.html',
-  styleUrls: ['./header.component.css'],
+  selector: "app-header",
+  templateUrl: "header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent {
   events: string[] = [];
   opened: boolean;
-  appName: string = '';
+  appName: string = "";
+  
+
   constructor() {
-    setTimeout(() => { this.appName = 'Beta' }, 1500)
+    setTimeout(() => {
+      this.appName = "Beta";
+    }, 1500);
   }
+
+  
 }

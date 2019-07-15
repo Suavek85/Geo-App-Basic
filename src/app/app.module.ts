@@ -17,6 +17,8 @@ import { LocationBlockComponent } from './components/location-block/location-blo
 import { StepperBlockComponent } from './components/stepper-block/stepper-block.component';
 import { LocationItem } from './components/location/location.component';
 import { LocationsService } from "./components/location-block/location-block.service";
+import { NavHeaderComponent } from "./components/nav-header/nav-header.component";
+import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { LocationsService } from "./components/location-block/location-block.ser
     FooterComponent,
     LocationBlockComponent,
     LocationItem,
-    StepperBlockComponent
+    StepperBlockComponent,
+    NavHeaderComponent,
+    NavSideListComponent
   ],
   imports: [
     BrowserModule,

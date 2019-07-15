@@ -14,14 +14,6 @@
   Add Location
 </button>
 <!-- <div *ngFor="let location of locations">{{ location }}</div> 
-
-
-<location-item
-  *ngFor="let location of locations"
-  [locationName]="location"
-></location-item>
-
-
 -->
 <mat-accordion>
 <location-item
@@ -29,9 +21,10 @@
   [locationName]="location"
 ></location-item>
 </mat-accordion>
+
+
 <!-- FORMS
 the above can also be achieved with forms
 
 (locationClicked)="onRemoveLocation(location)"
 -->
-</div>
