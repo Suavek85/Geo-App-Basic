@@ -1,0 +1,25 @@
+<mat-card>
+  <section fxLayout="column" fxLayoutAlign="space-around center" >
+    <h1>Sign in</h1>
+    <form fxLayout="column" fxLayoutAlign="space-around center">
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          placeholder="Your email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+          <input
+          matInput
+          type="password"
+          placeholder="Your password"
+          required
+        />
+      </mat-form-field>
+    </form>
+    <p>Don’t have an account yet?</p>
+    <button mat-raised-button color="primary"><a routerLink="/stepper">Sign up</a></button>
+  </section>
+</mat-card>

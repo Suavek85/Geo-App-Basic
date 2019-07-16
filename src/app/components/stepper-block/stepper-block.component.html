@@ -9,7 +9,8 @@
         #f="ngForm"
         (ngSubmit)="onSubmit(f)"
       >
-        <ng-template matStepLabel>Fill out your details</ng-template>
+        <ng-template matStepLabel>Sign up - OPTIONAL</ng-template>
+        <p>Creating profile is optional. If you just want to play around, skip this step.</p>
 
         <!-- EMAIL-->
         <mat-form-field>
@@ -98,6 +99,7 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Set up your Home</ng-template>
+      <p>Pick your home location to start your journey with Geo app.</p>
       <mat-form-field>
         <input
           matInput
@@ -120,7 +122,7 @@
     You have successfully created a Geo-Profile!
     <div>
       <button mat-flat-button>
-        <a routerLink="/locations">Start adding your locations</a>
+        <a routerLink="/dashboard">Take me to Dashboard</a>
       </button>
     </div>
     <div>

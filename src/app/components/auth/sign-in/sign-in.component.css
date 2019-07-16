@@ -1,0 +1,14 @@
+mat-card {
+  width: 350px;
+  margin: 50px auto auto auto;
+  height: auto;
+}
+
+button {
+  margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
