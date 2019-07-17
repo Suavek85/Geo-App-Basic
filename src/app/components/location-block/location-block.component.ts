@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { LocationsService } from "./location-block.service";
 import { Subscription } from "rxjs";
 
+
 @Component({
   selector: "location-block",
   templateUrl: "./location-block.component.html",

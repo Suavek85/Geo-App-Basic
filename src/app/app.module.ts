@@ -10,12 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //DECLARATIONS
 import { AppComponent } from './app.component';
+import { BodyComponent } from './layout/body/body.component';
 import { HomeComponent } from './components/home/home.component';
-import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LocationBlockComponent } from './components/location-block/location-block.component';
 import { StepperBlockComponent } from './components/stepper-block/stepper-block.component';
 import { LocationItem } from './components/location/location.component';
+import { RemoveLocationAlert } from './components/location/remove-alert.component';
 import { LocationsService } from "./components/location-block/location-block.service";
 import { NavHeaderComponent } from "./components/nav-header/nav-header.component";
 import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
@@ -25,7 +26,7 @@ import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    BodyComponent,
     HomeComponent,
     FooterComponent,
     LocationBlockComponent,
@@ -34,7 +35,9 @@ import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
     NavHeaderComponent,
     NavSideListComponent,
     DashboardComponent,
-    SignInComponent
+    SignInComponent,
+    RemoveLocationAlert
+    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
     FlexLayoutModule
   ],
   providers: [LocationsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RemoveLocationAlert]
 })
 
 
