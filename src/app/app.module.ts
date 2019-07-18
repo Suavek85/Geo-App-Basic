@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 //PROVIDERS
-import { DataService } from './components/location-block/data.service';
+//import { DataService } from './components/location-block/data.service';
 import { LocationsService } from "./components/location-block/location-block.service";
 
 //DECLARATIONS
@@ -54,7 +54,9 @@ import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [LocationsService, DataService],
+  providers: [LocationsService
+   // ,DataService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [RemoveLocationAlert]
 })
