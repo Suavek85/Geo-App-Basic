@@ -14,6 +14,10 @@ export class LocationsService {
         return [...this.locations];
     }
 
+    getLastLocation() {
+        return [...this.locations[this.locations.length]]
+    }
+
     deleteLocation(locationName: string) {
        this.locations =  this.locations.filter(l => l !== locationName);
        this.locationsUpdated.next();

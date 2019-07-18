@@ -17,6 +17,8 @@ export class LocationItem implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit() {}
+
+  
   onLocationClick() {
     //this.locationClicked.emit();
     const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationName}});
