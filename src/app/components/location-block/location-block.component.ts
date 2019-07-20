@@ -35,16 +35,14 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
       }
     );
 
-  
-
     //this.dataService.getUsers().subscribe(data => (this.users$ = data));
   }
 
   addLocation() {
     //this.locations.push(this.locationName);
-    this.locationsService.addLocation(this.locationName);
+    
     this.locationsService.getAPI(this.locationName);
- 
+    //this.locationsService.addLocation(this.locationName);
 
     //TRYING OUT API IN ANGULAR WAY
     //this.long = this.users$.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];

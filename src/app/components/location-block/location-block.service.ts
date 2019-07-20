@@ -3,21 +3,23 @@ import { Test } from "./data.model";
 
 export class LocationsService {
   private locations = [];
+  //private newLocations = [];
   locationsUpdated = new Subject();
 
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
   long;
   lat;
+  p1;
 
   apiURL(input, key) {
     return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
     &key=${key}`;
   }
 
-  addLocation(locationName: string) {
-    this.locations.push(locationName);
-    this.locationsUpdated.next();
-  }
+  //addLocation(locationName: string) {
+    //this.locations.push(locationName);
+    //this.locationsUpdated.next();
+  //}
 
   getLocations() {
     return [...this.locations];
@@ -40,9 +42,14 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
         console.log(this.long);
         console.log(this.lat);
-        const p1 = new Test(locationName, this.lat, this.long);
-        console.log(p1)
-        p1.getMap();
+
+
+        this.p1 = new Test(locationName, this.lat, this.long);
+        console.log(this.p1)
+        this.p1.getMap();
+        this.locations.push(this.p1);
+        console.log(this.locations);
+        this.locationsUpdated.next();
     
       });
   }

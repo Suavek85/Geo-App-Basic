@@ -9,7 +9,7 @@ import { RemoveLocationAlert } from "./remove-alert.component";
   styleUrls: ["location.component.css"]
 })
 export class LocationItem implements OnInit {
-  @Input() locationName: string;
+  @Input() locationName: any;
   //@Output() locationClicked = new EventEmitter();
  
   constructor(

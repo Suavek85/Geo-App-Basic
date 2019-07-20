@@ -2,7 +2,7 @@
   <mat-expansion-panel >
     <mat-expansion-panel-header >
       <mat-panel-title>
-        {{ locationName}}
+        {{ locationName.loc}}
       </mat-panel-title>
       <mat-panel-description style="position: relative">
        
@@ -11,9 +11,13 @@
       
       
     </mat-expansion-panel-header>
-    <p>Extra content</p>
-    <img width="300" src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/50.58856964111328%2C22.046960830688477/13?mapSize=300,300&format=png&key=AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC" alt="Bing Map">
-    
+    <p>Location map</p>
+   
+    <img width="300" src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/{{
+      locationName.lo
+    }}%2C{{locationName.la}}/13?mapSize=300,300&format=png&key={{
+      locationName.key
+    }}" alt="Bing Map">
   </mat-expansion-panel>
 
 
