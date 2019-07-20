@@ -11,7 +11,7 @@ import { RemoveLocationAlert } from "./remove-alert.component";
 export class LocationItem implements OnInit {
   @Input() locationName: string;
   //@Output() locationClicked = new EventEmitter();
-
+ 
   constructor(
     private locationsService: LocationsService,
     private dialog: MatDialog

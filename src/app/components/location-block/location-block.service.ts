@@ -1,7 +1,8 @@
 import { Subject } from "rxjs";
+import { Test } from "./data.model";
 
 export class LocationsService {
-  private locations = ["Home"];
+  private locations = [];
   locationsUpdated = new Subject();
 
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
@@ -39,10 +40,15 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
         console.log(this.long);
         console.log(this.lat);
+        const p1 = new Test(locationName, this.lat, this.long);
+        console.log(p1)
+        p1.getMap();
+    
       });
   }
 
-  getMap() {
-    return `<img width="300" src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/${this.long}%2C${this.lat}/13?mapSize=300,300&format=png&key=${this.key}" alt="Bing Map">`;
-  }
+  
+
+
+
 }
