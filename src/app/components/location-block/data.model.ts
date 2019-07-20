@@ -3,7 +3,7 @@ export class Test {
   la: number;
   lo: number;
   key: string;
-  constructor(loc, la, lo) {
+  constructor(loc: string, la: number, lo: number) {
     this.loc = loc;
     this.la = la;
     this.lo = lo;

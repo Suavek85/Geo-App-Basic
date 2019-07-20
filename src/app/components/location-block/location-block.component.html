@@ -3,7 +3,8 @@
 <h2 style="text-align:center">Set your locations</h2>
 <p *ngIf="locations.length">Well done! Keep adding!</p>
 <mat-form-field>
-  <input matInput type="text" [(ngModel)]="locationName" />
+  <input matInput type="text" [(ngModel)]="locationName"/>
+  <mat-error>That's wrong</mat-error>
 </mat-form-field>
 <button
   class="button__add-locations"

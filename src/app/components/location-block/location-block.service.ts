@@ -3,13 +3,11 @@ import { Test } from "./data.model";
 
 export class LocationsService {
   private locations = [];
-  //private newLocations = [];
   locationsUpdated = new Subject();
-
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
-  long;
-  lat;
-  p1;
+  long: number;
+  lat: number;
+  p1: any;
 
   apiURL(input, key) {
     return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
@@ -36,22 +34,17 @@ export class LocationsService {
         return response.json();
       })
       .then(data => {
+        console.log(data);
         this.long =
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
         this.lat =
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-        console.log(this.long);
-        console.log(this.lat);
-
-
         this.p1 = new Test(locationName, this.lat, this.long);
-        console.log(this.p1)
-        this.p1.getMap();
         this.locations.push(this.p1);
         console.log(this.locations);
         this.locationsUpdated.next();
-    
-      });
+      })
+      .catch(error => window.alert('Wrong location name'))
   }
 
   

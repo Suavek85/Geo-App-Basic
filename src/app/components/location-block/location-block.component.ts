@@ -19,8 +19,7 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
   lat: number;
   private locationsSubscription: Subscription;
 
-  
-  //users$: User[];
+
 
   constructor(
     private locationsService: LocationsService,
@@ -34,25 +33,11 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
         this.locations = this.locationsService.getLocations();
       }
     );
-
-    //this.dataService.getUsers().subscribe(data => (this.users$ = data));
   }
 
   addLocation() {
-    //this.locations.push(this.locationName);
-    
     this.locationsService.getAPI(this.locationName);
-    //this.locationsService.addLocation(this.locationName);
-
-    //TRYING OUT API IN ANGULAR WAY
-    //this.long = this.users$.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
-    //this.lat = this.users$.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-    //this.dataService.sendLocation(this.locationName);
-    //this.dataService.getUsers().subscribe(data => (this.users$ = data));
-    //console.log(this.long);
-    //console.log(this.lat);
-    //console.log(this.users$)
-   
+    this.locationName = ' ';
   }
 
   onRemoveLocation(locationName: string) {

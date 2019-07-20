@@ -1,26 +1,24 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ locationName.loc }}
+    </mat-panel-title>
+    <mat-panel-description style="position: relative">
+      <span (click)="onLocationClick()">Remove</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>Location map</p>
 
-  <mat-expansion-panel >
-    <mat-expansion-panel-header >
-      <mat-panel-title>
-        {{ locationName.loc}}
-      </mat-panel-title>
-      <mat-panel-description style="position: relative">
-       
-        <span (click)="onLocationClick()">Remove</span>
-      </mat-panel-description>
-      
-      
-    </mat-expansion-panel-header>
-    <p>Location map</p>
-   
-    <img width="300" src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/{{
+  <img
+    width="300"
+    src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/{{
       locationName.lo
-    }}%2C{{locationName.la}}/13?mapSize=300,300&format=png&key={{
+    }}%2C{{ locationName.la }}/13?mapSize=300,300&format=png&key={{
       locationName.key
-    }}" alt="Bing Map">
-  </mat-expansion-panel>
-
-
+    }}"
+    alt="Bing Map"
+  />
+</mat-expansion-panel>
 
 <!--
 <article class="location">

@@ -18,10 +18,9 @@ export class LocationItem implements OnInit {
   ) {}
   ngOnInit() {}
 
-  
   onLocationClick() {
     //this.locationClicked.emit();
-    const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationName}});
+    const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationName.loc}});
     dialogRef.afterClosed().subscribe(result => {
      result? this.locationsService.deleteLocation(this.locationName) : null
     })
