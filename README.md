@@ -35,7 +35,7 @@ My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch.
 
 ## Issues
 
-- desktop use only,
+- desktop and mobile,
 
 - IN PROGRESS.
 

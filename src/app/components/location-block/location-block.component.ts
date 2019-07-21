@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { LocationsService } from "./location-block.service";
 import { Subscription } from "rxjs";
-//import { Test } from "./data.model";
-//import { DataService } from "./data.service";
 
 @Component({
   selector: "location-block",
@@ -14,16 +12,14 @@ import { Subscription } from "rxjs";
 export class LocationBlockComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   locationName = "";
+  homeName = "";
   locations = [];
   long: number;
   lat: number;
   private locationsSubscription: Subscription;
 
-
-
   constructor(
     private locationsService: LocationsService,
-    //private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -38,6 +34,11 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
   addLocation() {
     this.locationsService.getAPI(this.locationName);
     this.locationName = ' ';
+  }
+
+  addHome() {
+    this.locationsService.getHomeAPI(this.homeName);
+    this.homeName = ' ';
   }
 
   onRemoveLocation(locationName: string) {
