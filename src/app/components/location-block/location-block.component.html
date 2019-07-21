@@ -5,9 +5,10 @@
   <mat-card style="width: 500px; margin-top: 30px">
     <h2 style="text-align:center">Set your home</h2>
     <mat-form-field>
-      <input matInput type="text" [(ngModel)]="homeName" placeholder="Not set" />
+      <input matInput type="text" [(ngModel)]="homeName" placeholder="Enter city name" />
     </mat-form-field>
     <button class="button__add-locations" mat-flat-button color="accent" (click)="addHome()">Set home</button>
+    <app-location-home *ngFor="let home of homes" [homeName]="home"></app-location-home>
   </mat-card>
 
   <!-- ADDING LOCATIONS-->

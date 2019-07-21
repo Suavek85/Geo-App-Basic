@@ -8,6 +8,7 @@ export class LocationsService {
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
   long: number;
   lat: number;
+  address: any;
   p1: any;
   p2: any;
 
@@ -16,13 +17,12 @@ export class LocationsService {
     &key=${key}`;
   }
 
-  //addLocation(locationName: string) {
-  //this.locations.push(locationName);
-  //this.locationsUpdated.next();
-  //}
-
   getLocations() {
     return [...this.locations];
+  }
+
+  getHomes() {
+    return [...this.homes];
   }
 
   deleteLocation(locationName: string) {
@@ -41,9 +41,10 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
         this.lat =
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-        this.p1 = new Test(locationName, this.lat, this.long);
+        this.address =
+          data.resourceSets[0].resources[0].address.formattedAddress;
+        this.p1 = new Test(locationName, this.lat, this.long, this.address);
         this.locations.push(this.p1);
-        console.log(this.locations);
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -60,12 +61,21 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
         this.lat =
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-        this.p2 = new Test(homeName, this.lat, this.long);
-        this.homes.length? this.homes.splice(-1,1) : null;
+        this.address =
+          data.resourceSets[0].resources[0].address.formattedAddress;
+        this.p2 = new Test(homeName, this.lat, this.long, this.address);
+        this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.p2);
-        console.log(this.homes)
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));
   }
+
+  //getAPIData(long, lat) {
+  //long =
+  //data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
+  //lat =
+  //data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
+
+  //}
 }

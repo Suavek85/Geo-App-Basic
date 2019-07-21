@@ -27,6 +27,7 @@ import { NavHeaderComponent } from "./components/nav-header/nav-header.component
 import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
+import { LocationHomeComponent } from "./components/location-home/location-home.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
     NavSideListComponent,
     DashboardComponent,
     SignInComponent,
-    RemoveLocationAlert
+    RemoveLocationAlert,
+    LocationHomeComponent
     
   ],
   imports: [

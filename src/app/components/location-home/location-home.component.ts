@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { LocationsService } from "../location-block/location-block.service";
 
 @Component({
   selector: 'app-location-home',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-home.component.css']
 })
 export class LocationHomeComponent implements OnInit {
-
-  constructor() { }
+  @Input() homeName: any;
+  constructor(
+    private locationsService: LocationsService,
+  ) { }
 
   ngOnInit() {
   }

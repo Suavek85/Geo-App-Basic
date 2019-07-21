@@ -14,9 +14,11 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
   locationName = "";
   homeName = "";
   locations = [];
+  homes = [];
   long: number;
   lat: number;
   private locationsSubscription: Subscription;
+  private homesSubscription: Subscription;
 
   constructor(
     private locationsService: LocationsService,
@@ -27,6 +29,12 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
     this.locationsSubscription = this.locationsService.locationsUpdated.subscribe(
       () => {
         this.locations = this.locationsService.getLocations();
+      }
+    );
+    this.homes = this.locationsService.getHomes();
+    this.homesSubscription = this.locationsService.locationsUpdated.subscribe(
+      () => {
+        this.homes = this.locationsService.getHomes();
       }
     );
   }
