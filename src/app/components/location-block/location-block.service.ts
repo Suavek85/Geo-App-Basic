@@ -1,5 +1,5 @@
 import { Subject } from "rxjs";
-import { Test } from "./data.model";
+import { LocationDataElement } from "./data.model";
 
 export class LocationsService {
   private locations = [];
@@ -9,8 +9,8 @@ export class LocationsService {
   long: number;
   lat: number;
   address: any;
-  p1: any;
-  p2: any;
+  newLocationEl: any;
+  newHomeEl: any;
 
   apiURL(input, key) {
     return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
@@ -43,8 +43,8 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
         this.address =
           data.resourceSets[0].resources[0].address.formattedAddress;
-        this.p1 = new Test(locationName, this.lat, this.long, this.address);
-        this.locations.push(this.p1);
+        this.newLocationEl = new LocationDataElement(locationName, this.lat, this.long, this.address);
+        this.locations.push(this.newLocationEl);
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -63,9 +63,9 @@ export class LocationsService {
           data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
         this.address =
           data.resourceSets[0].resources[0].address.formattedAddress;
-        this.p2 = new Test(homeName, this.lat, this.long, this.address);
+        this.newHomeEl = new LocationDataElement(homeName, this.lat, this.long, this.address);
         this.homes.length ? this.homes.splice(-1, 1) : null;
-        this.homes.push(this.p2);
+        this.homes.push(this.newHomeEl);
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));

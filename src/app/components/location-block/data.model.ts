@@ -1,4 +1,4 @@
-export class Test {
+export class LocationDataElement {
   loc: string;
   la: number;
   lo: number;
