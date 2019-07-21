@@ -8,7 +8,7 @@
       <input matInput type="text" [(ngModel)]="homeName" placeholder="Enter city name" />
     </mat-form-field>
     <button class="button__add-locations" mat-flat-button color="accent" (click)="addHome()">Set home</button>
-    <app-location-home *ngFor="let home of homes" [homeName]="home"></app-location-home>
+    <app-location-home *ngFor="let home of homes" [homeObj]="home"></app-location-home>
   </mat-card>
 
   <!-- ADDING LOCATIONS-->
@@ -17,7 +17,7 @@
     <h2 style=" text-align:center">Set your locations</h2>
     <p *ngIf="locations.length">Well done! Keep adding!</p>
     <mat-form-field>
-      <input matInput type="text" [(ngModel)]="locationName" />
+      <input matInput type="text" [(ngModel)]="locationName" placeholder="Enter city name" />
       <mat-error>That's wrong</mat-error>
     </mat-form-field>
     <button class="button__add-locations" mat-flat-button color="primary" (click)="addLocation()">
@@ -26,7 +26,7 @@
     <!-- <div *ngFor="let location of locations">{{ location }}</div> 
 -->
     <mat-accordion>
-      <location-item *ngFor="let location of locations" [locationName]="location"></location-item>
+      <location-item *ngFor="let location of locations" [locationObj]="location"></location-item>
     </mat-accordion>
 
   </mat-card>

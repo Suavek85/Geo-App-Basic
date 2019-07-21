@@ -1,7 +1,7 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{ locationName.loc }}
+      {{ locationObj.loc }}
     </mat-panel-title>
     <mat-panel-description style="position: relative">
       <span (click)="onLocationClick()">Remove</span>
@@ -12,9 +12,9 @@
   <img
     width="300"
     src="https://dev.virtualearth.net/REST/V1/Imagery/Map/Road/{{
-      locationName.lo
-    }}%2C{{ locationName.la }}/13?mapSize=300,300&format=png&key={{
-      locationName.key
+      locationObj.la
+    }}%2C{{ locationObj.lo }}/13?mapSize=300,300&format=png&key={{
+      locationObj.key
     }}"
     alt="Bing Map"
   />

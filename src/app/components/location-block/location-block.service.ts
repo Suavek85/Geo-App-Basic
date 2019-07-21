@@ -9,13 +9,11 @@ export class LocationsService {
   long: number;
   lat: number;
   address: any;
+  country: any;
   newLocationEl: any;
   newHomeEl: any;
-
-  apiURL(input, key) {
-    return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
-    &key=${key}`;
-  }
+  uniqueCountries: any;
+  northernMostLocation: any;
 
   getLocations() {
     return [...this.locations];
@@ -30,6 +28,13 @@ export class LocationsService {
     this.locationsUpdated.next();
   }
 
+  //API METHODS
+
+  apiURL(input, key) {
+    return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
+    &key=${key}`;
+  }
+
   getAPI(locationName: string) {
     fetch(this.apiURL(locationName, this.key))
       .then(function(response) {
@@ -37,14 +42,17 @@ export class LocationsService {
       })
       .then(data => {
         console.log(data);
-        this.long =
-          data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
-        this.lat =
-          data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-        this.address =
-          data.resourceSets[0].resources[0].address.formattedAddress;
-        this.newLocationEl = new LocationDataElement(locationName, this.lat, this.long, this.address);
+        this.setAPIData(data);
+        this.newLocationEl = new LocationDataElement(
+          locationName,
+          this.lat,
+          this.long,
+          this.address,
+          this.country
+        );
         this.locations.push(this.newLocationEl);
+        console.log(this.locations);
+        this.getUniqueCountries();
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -57,25 +65,42 @@ export class LocationsService {
       })
       .then(data => {
         console.log(data);
-        this.long =
-          data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
-        this.lat =
-          data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
-        this.address =
-          data.resourceSets[0].resources[0].address.formattedAddress;
-        this.newHomeEl = new LocationDataElement(homeName, this.lat, this.long, this.address);
+        this.setAPIData(data);
+        this.newHomeEl = new LocationDataElement(
+          homeName,
+          this.lat,
+          this.long,
+          this.address,
+          this.country
+        );
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
+        console.log(this.homes);
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));
   }
 
-  //getAPIData(long, lat) {
-  //long =
-  //data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
-  //lat =
-  //data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
+  setAPIData(data) {
+    this.long =
+      data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
+    this.lat =
+      data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
+    this.address = data.resourceSets[0].resources[0].address.formattedAddress;
+    this.country = data.resourceSets[0].resources[0].address.countryRegion;
+  }
 
-  //}
+  //STATS METHODS
+
+  getUniqueCountries() {
+    const allCountries = [];
+    this.locations.forEach(el => {
+      allCountries.push(el.country);
+    });
+    this.uniqueCountries = [...new Set(allCountries)];
+  }
+
+  getNorthernmostLocation() {
+    //this.northernMostLocation = this.locations.filter(el => { el.la})
+  }
 }

@@ -28,6 +28,7 @@ import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.c
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
 import { LocationHomeComponent } from "./components/location-home/location-home.component";
+import { StatsGridComponent } from "./components/stats-grid/stats-grid.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LocationHomeComponent } from "./components/location-home/location-home.
     DashboardComponent,
     SignInComponent,
     RemoveLocationAlert,
-    LocationHomeComponent
+    LocationHomeComponent,
+    StatsGridComponent
     
   ],
   imports: [

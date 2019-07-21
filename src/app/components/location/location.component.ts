@@ -9,7 +9,7 @@ import { RemoveLocationAlert } from "./remove-alert.component";
   styleUrls: ["location.component.css"]
 })
 export class LocationItem implements OnInit {
-  @Input() locationName: any;
+  @Input() locationObj: any;
   //@Output() locationClicked = new EventEmitter();
  
   constructor(
@@ -20,9 +20,9 @@ export class LocationItem implements OnInit {
 
   onLocationClick() {
     //this.locationClicked.emit();
-    const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationName.loc}});
+    const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationObj.loc}});
     dialogRef.afterClosed().subscribe(result => {
-     result? this.locationsService.deleteLocation(this.locationName) : null
+     result? this.locationsService.deleteLocation(this.locationObj) : null
     })
   
   }

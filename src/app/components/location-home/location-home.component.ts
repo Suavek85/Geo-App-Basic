@@ -7,7 +7,7 @@ import { LocationsService } from "../location-block/location-block.service";
   styleUrls: ['./location-home.component.css']
 })
 export class LocationHomeComponent implements OnInit {
-  @Input() homeName: any;
+  @Input() homeObj: any;
   constructor(
     private locationsService: LocationsService,
   ) { }
