@@ -10,8 +10,10 @@ import { Subscription } from "rxjs";
 export class StatsGridComponent implements OnInit {
   uniqueCountries = [];
   northernmostLoc: any;
+  southernmostLoc: any;
   private uniqueCountriesSubscription: Subscription;
   private northernmostLocSubscription: Subscription;
+  private southernmostLocSubscription: Subscription;
 
   constructor(private locationsService: LocationsService) {}
 
@@ -22,10 +24,18 @@ export class StatsGridComponent implements OnInit {
         this.uniqueCountries = this.locationsService.uniqueCountries;
       }
     );
+
     this.northernmostLoc = this.locationsService.northernMostLocation;
     this.northernmostLocSubscription = this.locationsService.locationsUpdated.subscribe(
       () => {
         this.northernmostLoc = this.locationsService.northernMostLocation;
+      }
+    );
+
+    this.southernmostLoc = this.locationsService.southernMostLocation;
+    this.southernmostLocSubscription = this.locationsService.locationsUpdated.subscribe(
+      () => {
+        this.southernmostLoc = this.locationsService.southernMostLocation;
       }
     );
   }

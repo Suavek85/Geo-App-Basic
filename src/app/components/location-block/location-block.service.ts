@@ -13,7 +13,8 @@ export class LocationsService {
   newLocationEl: any;
   newHomeEl: any;
   uniqueCountries: any;
-  northernMostLocation: any;
+  northernMostLocation: any = "None"
+  southernMostLocation: any = "None"
 
   getLocations() {
     return [...this.locations];
@@ -54,6 +55,7 @@ export class LocationsService {
         console.log(this.locations);
         this.getUniqueCountries();
         this.getNorthernmostLocation();
+        this.getSouthernmostLocation();
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -102,9 +104,16 @@ export class LocationsService {
   }
 
   getNorthernmostLocation() {
-    const northernObj = this.locations.reduce(function(prev, current) {
+    const northObj = this.locations.reduce(function(prev, current) {
       return prev.la > current.la ? prev : current;
     });
-    this.northernMostLocation = northernObj.loc;
+    this.northernMostLocation = northObj.loc;
+  }
+
+  getSouthernmostLocation() {
+    const southObj = this.locations.reduce(function(prev, current) {
+      return prev.la < current.la ? prev.loc : current.loc;
+    });
+    this.southernMostLocation = southObj.loc;
   }
 }

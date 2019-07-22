@@ -1,4 +1,4 @@
-<mat-grid-list cols="2" rowHeight="200px">
+<mat-grid-list cols="3" gutterSize="40px" rowHeight="200px">
   <mat-grid-tile>
     <mat-grid-tile-header>
       <h3>Your unique countries:</h3>
@@ -10,14 +10,45 @@
 
   <mat-grid-tile>
     <mat-grid-tile-header>
-      <h3>Northermost location:</h3>
+      <h3>Northernmost location:</h3>
     </mat-grid-tile-header>
     <mat-list >
       <mat-list-item>{{ northernmostLoc }}</mat-list-item>
     </mat-list>
   </mat-grid-tile>
 
-  
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
+  <mat-grid-tile>
+      <mat-grid-tile-header>
+          <h3>Southermost location:</h3>
+        </mat-grid-tile-header>
+        <mat-list >
+          <mat-list-item>{{ southernmostLoc }}</mat-list-item>
+        </mat-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+      <mat-grid-tile-header>
+          <h3>Easternmost location:</h3>
+        </mat-grid-tile-header>
+        <mat-list >
+          <mat-list-item></mat-list-item>
+        </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-grid-tile-header>
+          <h3>Westernmost location:</h3>
+        </mat-grid-tile-header>
+        <mat-list >
+          <mat-list-item></mat-list-item>
+        </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-grid-tile-header>
+          <h3>Closest to home location:</h3>
+        </mat-grid-tile-header>
+        <mat-list >
+          <mat-list-item></mat-list-item>
+        </mat-list>
+  </mat-grid-tile>
 </mat-grid-list>
+
