@@ -1,11 +1,23 @@
 <mat-grid-list cols="2" rowHeight="200px">
   <mat-grid-tile>
-    <p>Your unique countries: </p>
-    <ul *ngFor="let item of uniqueCountries">
-      <li>{{ item }}</li>
-    </ul>
+    <mat-grid-tile-header>
+      <h3>Your unique countries:</h3>
+    </mat-grid-tile-header>
+    <mat-list *ngFor="let item of uniqueCountries">
+      <mat-list-item>{{ item }}</mat-list-item>
+    </mat-list>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-grid-tile-header>
+      <h3>Northermost location:</h3>
+    </mat-grid-tile-header>
+    <mat-list >
+      <mat-list-item>{{ northernmostLoc }}</mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+
+  
   <mat-grid-tile>3</mat-grid-tile>
   <mat-grid-tile>4</mat-grid-tile>
 </mat-grid-list>

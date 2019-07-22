@@ -53,6 +53,7 @@ export class LocationsService {
         this.locations.push(this.newLocationEl);
         console.log(this.locations);
         this.getUniqueCountries();
+        this.getNorthernmostLocation();
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -101,6 +102,9 @@ export class LocationsService {
   }
 
   getNorthernmostLocation() {
-    //this.northernMostLocation = this.locations.filter(el => { el.la})
+    const northernObj = this.locations.reduce(function(prev, current) {
+      return prev.la > current.la ? prev : current;
+    });
+    this.northernMostLocation = northernObj.loc;
   }
 }

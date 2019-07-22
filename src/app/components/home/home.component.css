@@ -1,35 +1,25 @@
 a {
-    text-decoration: none;
-    color: white;
-}
-
-h1 {
-    font-size: 40px;
-    color: #202020;
-    font-family: 'Lato', sans-serif;
-}
-
-h2 {
-    color: #202020;
+  text-decoration: none;
+  color: white;
 }
 
 .home-wrapper {
-    position: relative;
-  }
-  .home-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    background-image: linear-gradient(
-        rgba(200, 200, 200, 0.7), 
-        rgba(200, 200, 200, 0.7)
-      ),url('../../../assets/images/geo-background.jpg');
-    filter: grayscale(100%);
-  }
-  .home-wrapper__inside {
-    position: relative;
-    height: 85vh;
-  }
+  position: relative;
+}
+
+.home-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(200, 200, 200, 0.7),
+      rgba(200, 200, 200, 0.7)), url('../../../assets/images/geo-background.jpg');
+  filter: grayscale(100%);
+}
+
+.home-wrapper__inside {
+  position: relative;
+  height: 85vh;
+}
