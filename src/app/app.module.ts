@@ -1,3 +1,4 @@
+
 import { NgModule} from '@angular/core';
 import { MaterialModule} from './material.module';
 
@@ -11,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 //PROVIDERS
 import { LocationsService } from "./components/locations/location-block.service";
+import { AuthService } from './components/auth/auth.service';
 
 //DECLARATIONS
 import { AppComponent } from './app.component';
@@ -57,9 +59,7 @@ import { StatsGridComponent } from "./components/stats-grid/stats-grid.component
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [LocationsService
-   // ,DataService
-  ],
+  providers: [LocationsService, AuthService],
   bootstrap: [AppComponent],
   entryComponents: [RemoveLocationAlert]
 })

@@ -1,25 +1,21 @@
 <mat-card>
-  <section fxLayout="column" fxLayoutAlign="space-around center" >
+  <section fxLayout="column" fxLayoutAlign="space-around center">
     <h1>Sign in</h1>
-    <form fxLayout="column" fxLayoutAlign="space-around center">
+    <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="loginForm">
       <mat-form-field>
-        <input
-          matInput
-          type="email"
-          placeholder="Your email"
-          required
-        />
+        <input matInput type="email" placeholder="Your email" formControlName="email" />
       </mat-form-field>
+      <mat-hint>Please enter a valid email</mat-hint>
+      <mat-error>Invalid or missing email</mat-error>
       <mat-form-field>
-          <input
-          matInput
-          type="password"
-          placeholder="Your password"
-          required
-        />
+        <input matInput type="password" placeholder="Your password" formControlName="password"  />
+        <mat-hint>Please enter your password</mat-hint>
+        <mat-error>Invalid or missing password</mat-error>
       </mat-form-field>
     </form>
     <p>Don’t have an account yet?</p>
-    <button mat-raised-button color="primary"><a routerLink="/stepper">Sign up</a></button>
+    <button mat-raised-button color="primary">
+      <a routerLink="/stepper">Sign up</a>
+    </button>
   </section>
 </mat-card>

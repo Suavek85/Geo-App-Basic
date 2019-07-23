@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, NgForm } from "@angular/forms";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: "app-stepper-block",
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
   secondFormGroup: FormGroup;
   maxDate;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
     this.maxDate = new Date();
@@ -24,5 +25,9 @@ export class SignupComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form);
+    this.authService.registerUser( {
+      email: form.value.email,
+      password: form.value.password
+    })
   }
 }
