@@ -42,7 +42,6 @@ export class LocationsService {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.setAPIData(data);
         this.newLocationEl = new LocationDataElement(
           locationName,
@@ -52,7 +51,6 @@ export class LocationsService {
           this.country
         );
         this.locations.push(this.newLocationEl);
-        console.log(this.locations);
         this.getUniqueCountries();
         this.getNorthernmostLocation();
         this.getSouthernmostLocation();
@@ -67,7 +65,6 @@ export class LocationsService {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.setAPIData(data);
         this.newHomeEl = new LocationDataElement(
           homeName,
@@ -78,7 +75,6 @@ export class LocationsService {
         );
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
-        console.log(this.homes);
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));
@@ -115,5 +111,6 @@ export class LocationsService {
       return prev.la < current.la ? prev.loc : current.loc;
     });
     this.southernMostLocation = southObj.loc;
+  
   }
 }
