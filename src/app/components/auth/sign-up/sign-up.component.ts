@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators, NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-stepper-block",
-  templateUrl: "./stepper-block.component.html",
-  styleUrls: ["./stepper-block.component.css"]
+  templateUrl: "./sign-up.component.html",
+  styleUrls: ["./sign-up.component.css"]
 })
-export class StepperBlockComponent implements OnInit {
+export class SignupComponent implements OnInit {
   isLinear = true;
   secondFormGroup: FormGroup;
   maxDate;
@@ -17,7 +17,7 @@ export class StepperBlockComponent implements OnInit {
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
     this.secondFormGroup = this._formBuilder.group({
-        secondCtrl: ["", [Validators.minLength(3),Validators.maxLength(7) ]]
+        secondCtrl: ["", [Validators.minLength(3),Validators.maxLength(12) ]]
       }
     );
   }

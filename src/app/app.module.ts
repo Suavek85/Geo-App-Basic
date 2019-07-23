@@ -18,7 +18,7 @@ import { BodyComponent } from './layout/body/body.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LocationBlockComponent } from './components/locations/location-block/location-block.component';
-import { StepperBlockComponent } from './components/stepper-block/stepper-block.component';
+import { SignupComponent } from './components/auth/sign-up/sign-up.component';
 import { LocationItem } from './components/locations/location-item/location-item.component';
 import { RemoveLocationAlert } from './components/locations/location-item/remove-alert.component';
 
@@ -37,7 +37,7 @@ import { StatsGridComponent } from "./components/stats-grid/stats-grid.component
     FooterComponent,
     LocationBlockComponent,
     LocationItem,
-    StepperBlockComponent,
+    SignupComponent,
     NavHeaderComponent,
     NavSideListComponent,
     DashboardComponent,

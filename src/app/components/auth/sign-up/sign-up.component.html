@@ -1,6 +1,28 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <!-- STEP 1 -->
-  <mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Enter username - REQUIRED </ng-template>
+      <p>Pick your username for your journey with Geo app.</p>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="secondCtrl"
+          required
+        />
+        <mat-error >Mininum 3 and max 12 characters long</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- STEP 2-->
+
+  <mat-step >
     <section class="signup-form">
       <form
         class="form-wrapper"
@@ -94,35 +116,13 @@
     </section>
   </mat-step>
 
-  <!-- STEP 2-->
-
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Set up your Home</ng-template>
-      <p>Pick your home location to start your journey with Geo app.</p>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Home"
-          formControlName="secondCtrl"
-          required
-        />
-        <mat-error >Mininum 3 and max 7 characters long</mat-error>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
   <!-- STEP 3-->
   <mat-step label="Step 3">
     <ng-template matStepLabel>Done</ng-template>
-    You have successfully created a Geo-Profile!
+    You're ready to go!
     <div>
-      <button mat-flat-button>
-        <a routerLink="/dashboard">Take me to Dashboard</a>
+      <button style="margin-top: 20px; margin-bottom: 20px" mat-flat-button color="primary">
+        <a style="color: white" routerLink="/dashboard">Take me to Dashboard</a>
       </button>
     </div>
     <div>
