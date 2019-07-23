@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LocationsService } from "../location-block/location-block.service";
+import { LocationsService } from "../locations/location-block.service";
 import { Subscription } from "rxjs";
 
 @Component({

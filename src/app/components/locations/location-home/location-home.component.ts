@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LocationsService } from "../location-block/location-block.service";
+import { LocationsService } from "../location-block.service";
 
 @Component({
   selector: 'app-location-home',

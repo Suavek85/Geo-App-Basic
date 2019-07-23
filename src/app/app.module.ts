@@ -10,24 +10,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 //PROVIDERS
-//import { DataService } from './components/location-block/data.service';
-import { LocationsService } from "./components/location-block/location-block.service";
+import { LocationsService } from "./components/locations/location-block.service";
 
 //DECLARATIONS
 import { AppComponent } from './app.component';
 import { BodyComponent } from './layout/body/body.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { LocationBlockComponent } from './components/location-block/location-block.component';
+import { LocationBlockComponent } from './components/locations/location-block/location-block.component';
 import { StepperBlockComponent } from './components/stepper-block/stepper-block.component';
-import { LocationItem } from './components/location/location.component';
-import { RemoveLocationAlert } from './components/location/remove-alert.component';
+import { LocationItem } from './components/locations/location-item/location-item.component';
+import { RemoveLocationAlert } from './components/locations/location-item/remove-alert.component';
 
 import { NavHeaderComponent } from "./components/nav-header/nav-header.component";
 import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
-import { LocationHomeComponent } from "./components/location-home/location-home.component";
+import { LocationHomeComponent } from "./components/locations/location-home/location-home.component";
 import { StatsGridComponent } from "./components/stats-grid/stats-grid.component";
 
 @NgModule({

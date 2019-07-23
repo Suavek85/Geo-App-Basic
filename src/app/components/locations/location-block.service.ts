@@ -51,9 +51,7 @@ export class LocationsService {
           this.country
         );
         this.locations.push(this.newLocationEl);
-        this.getUniqueCountries();
-        this.getNorthernmostLocation();
-        this.getSouthernmostLocation();
+        this.getAllStats();
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -80,7 +78,7 @@ export class LocationsService {
       .catch(error => window.alert("Wrong home name"));
   }
 
-  setAPIData(data) {
+  setAPIData(data: any) {
     this.long =
       data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
     this.lat =
@@ -90,6 +88,12 @@ export class LocationsService {
   }
 
   //STATS METHODS
+
+  getAllStats() {
+    this.getUniqueCountries();
+    this.getNorthernmostLocation();
+    this.getSouthernmostLocation();
+  }
 
   getUniqueCountries() {
     const allCountries = [];
@@ -108,9 +112,8 @@ export class LocationsService {
 
   getSouthernmostLocation() {
     const southObj = this.locations.reduce(function(prev, current) {
-      return prev.la < current.la ? prev.loc : current.loc;
+      return prev.la < current.la ? prev : current;
     });
     this.southernMostLocation = southObj.loc;
-  
   }
 }

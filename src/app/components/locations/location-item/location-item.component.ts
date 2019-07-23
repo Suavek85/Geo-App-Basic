@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { LocationsService } from "../location-block/location-block.service";
+import { LocationsService } from "../location-block.service";
 import { MatDialog } from "@angular/material";
 import { RemoveLocationAlert } from "./remove-alert.component";
 
 @Component({
   selector: "location-item",
-  templateUrl: "location.component.html",
-  styleUrls: ["location.component.css"]
+  templateUrl: "location-item.component.html",
+  styleUrls: ["location-item.component.css"]
 })
 export class LocationItem implements OnInit {
   @Input() locationObj: any;

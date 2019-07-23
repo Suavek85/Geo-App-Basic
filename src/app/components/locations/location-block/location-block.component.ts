@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { LocationsService } from "./location-block.service";
+import { LocationsService } from "../location-block.service";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -11,8 +11,8 @@ import { Subscription } from "rxjs";
 
 export class LocationBlockComponent implements OnInit, OnDestroy {
   panelOpenState = false;
-  locationName = "";
-  homeName = "";
+  locationName: string = "";
+  homeName: string = "";
   locations = [];
   homes = [];
   long: number;
