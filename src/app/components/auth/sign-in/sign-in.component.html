@@ -1,20 +1,23 @@
 <mat-card>
-  <section fxLayout="column" fxLayoutAlign="space-around center">
+  <section fxLayout="column" fxLayoutAlign="space-around center" style="margin-bottom: 50px">
     <h1>Sign in</h1>
-    <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="loginForm">
+    <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <input matInput type="email" placeholder="Your email" formControlName="email" />
+        <mat-hint>Please enter a valid email</mat-hint>
+        <mat-error>Invalid or missing email</mat-error>
       </mat-form-field>
-      <mat-hint>Please enter a valid email</mat-hint>
-      <mat-error>Invalid or missing email</mat-error>
       <mat-form-field>
-        <input matInput type="password" placeholder="Your password" formControlName="password"  />
+        <input matInput type="password" placeholder="Your password" formControlName="password" />
         <mat-hint>Please enter your password</mat-hint>
         <mat-error>Invalid or missing password</mat-error>
       </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" style="margin-top: 20px" [disabled]="loginForm.invalid">
+        Submit
+      </button>
     </form>
     <p>Don’t have an account yet?</p>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="accent">
       <a routerLink="/stepper">Sign up</a>
     </button>
   </section>

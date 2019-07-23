@@ -4,11 +4,8 @@ mat-card {
   height: auto;
 }
 
-button {
-  margin-bottom: 50px;
-}
-
 a {
     text-decoration: none;
     color: white;
 }
+
