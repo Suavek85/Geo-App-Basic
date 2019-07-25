@@ -32,7 +32,7 @@
         <button mat-button><a routerLink="/signin">Sign In</a></button>
       </li>
       <li *ngIf="isAuth">
-        <button mat-button><a routerLink="/">Sign Out</a></button>
+        <button mat-button><a style="cursor: pointer;" (click)="onSignOut()" routerLink="/">Sign Out</a></button>
       </li>
     </ul>
   </mat-toolbar>

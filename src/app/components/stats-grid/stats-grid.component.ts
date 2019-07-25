@@ -9,8 +9,6 @@ import { Subscription } from "rxjs";
 })
 export class StatsGridComponent implements OnInit {
   uniqueCountries = [];
-  northernmostLoc: any;
-  southernmostLoc: any;
   allStatsData: any;
   private uniqueCountriesSubscription: Subscription;
   private allStatsSubscription: Subscription;
@@ -31,16 +29,5 @@ export class StatsGridComponent implements OnInit {
         this.uniqueCountries = this.locationsService.uniqueCountries;
       }
     );
-
-  
   }
-
-
-  //test() {
-   // console.log(this.allStatsData)
-  //}
-  //getUniqueCountries() {
-   // console.log("function itself works");
-    //console.log([...this.uniqueCountries]);
-  //}
 }

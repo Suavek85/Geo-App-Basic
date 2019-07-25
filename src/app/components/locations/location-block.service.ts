@@ -3,10 +3,14 @@ import { LocationDataElement } from "./data.model";
 import { StatsData} from "./stats.model";
 
 
-export class LocationsService {
+export class LocationsService  {
   private locations = [];
   private homes = [];
-  public statsData: StatsData[];
+  public statsData: StatsData[] = [{
+    uniqueCountries: [],
+    northernmostLocation: 'None',
+    southernmostLocation: 'None',
+  }]
   locationsUpdated = new Subject();
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
   long: number;
@@ -92,9 +96,9 @@ export class LocationsService {
     this.country = data.resourceSets[0].resources[0].address.countryRegion;
   }
 
-  //STATS METHODS
+  //STATS PRIVATE METHODS
 
-  getAllStats() {
+  private getAllStats() {
     this.getUniqueCountries();
     this.getNorthernmostLocation();
     this.getSouthernmostLocation();
@@ -105,7 +109,7 @@ export class LocationsService {
     }]
   }
 
-  getUniqueCountries() {
+  private getUniqueCountries() {
     const allCountries = [];
     this.locations.forEach(el => {
       allCountries.push(el.country);
@@ -113,14 +117,14 @@ export class LocationsService {
     this.uniqueCountries = [...new Set(allCountries)];
   }
 
-  getNorthernmostLocation() {
+  private getNorthernmostLocation() {
     const northObj = this.locations.reduce(function(prev, current) {
       return prev.la > current.la ? prev : current;
     });
     this.northernMostLocation = northObj.loc;
   }
 
-  getSouthernmostLocation() {
+  private getSouthernmostLocation() {
     const southObj = this.locations.reduce(function(prev, current) {
       return prev.la < current.la ? prev : current;
     });
