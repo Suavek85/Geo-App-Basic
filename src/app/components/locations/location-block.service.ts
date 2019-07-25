@@ -1,9 +1,12 @@
 import { Subject } from "rxjs";
 import { LocationDataElement } from "./data.model";
+import { StatsData} from "./stats.model";
+
 
 export class LocationsService {
   private locations = [];
   private homes = [];
+  public statsData: StatsData[];
   locationsUpdated = new Subject();
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
   long: number;
@@ -15,6 +18,7 @@ export class LocationsService {
   uniqueCountries: any;
   northernMostLocation: any = "None"
   southernMostLocation: any = "None"
+  
 
   getLocations() {
     return [...this.locations];
@@ -23,6 +27,7 @@ export class LocationsService {
   getHomes() {
     return [...this.homes];
   }
+
 
   deleteLocation(locationName: string) {
     this.locations = this.locations.filter(l => l !== locationName);
@@ -93,6 +98,11 @@ export class LocationsService {
     this.getUniqueCountries();
     this.getNorthernmostLocation();
     this.getSouthernmostLocation();
+    this.statsData = [{
+      uniqueCountries: this.uniqueCountries,
+      northernmostLocation: this.northernMostLocation,
+      southernmostLocation: this.southernMostLocation,
+    }]
   }
 
   getUniqueCountries() {

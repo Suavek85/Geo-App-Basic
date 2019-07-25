@@ -13,8 +13,8 @@
     <mat-grid-tile-header>
       <h3>Northernmost location:</h3>
     </mat-grid-tile-header>
-    <mat-list >
-      <mat-list-item>{{ northernmostLoc }}</mat-list-item>
+    <mat-list *ngFor="let item of allStatsData">
+      <mat-list-item>{{ item.northernmostLocation }}</mat-list-item>
     </mat-list>
   </mat-grid-tile>
 
@@ -22,8 +22,8 @@
       <mat-grid-tile-header>
           <h3>Southermost location:</h3>
         </mat-grid-tile-header>
-        <mat-list >
-          <mat-list-item>{{ southernmostLoc }}</mat-list-item>
+        <mat-list *ngFor="let item of allStatsData">
+          <mat-list-item>{{ item.southernmostLocation }}</mat-list-item>
         </mat-list>
   </mat-grid-tile>
 
@@ -37,7 +37,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
       <mat-grid-tile-header>
-          <h3>Westernmost location:</h3>
+          <h3>Westernmost location</h3>
         </mat-grid-tile-header>
         <mat-list >
           <mat-list-item></mat-list-item>

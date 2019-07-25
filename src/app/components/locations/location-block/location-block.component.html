@@ -15,7 +15,8 @@
 
   <mat-card style="width: 500px; margin-top: 30px">
     <h2 style=" text-align:center">Set your locations</h2>
-    <p *ngIf="locations.length">Well done! Keep adding!</p>
+    <p *ngIf="locations.length; else onelocation">Well done! Keep adding!</p>
+    <ng-template #onelocation><p>Add your first location!</p></ng-template>
     <mat-form-field>
       <input matInput type="text" [(ngModel)]="locationName" placeholder="Enter city name" />
       <mat-error>That's wrong</mat-error>

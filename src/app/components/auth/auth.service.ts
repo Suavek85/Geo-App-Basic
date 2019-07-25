@@ -19,7 +19,9 @@ export class AuthService {
       email: authData.email,
       userId: Math.round(Math.random() * 1000).toString()
     };
+    this.authChange.next(true);
   }
+
   signOut() {
     this.user = null;
     this.authChange.next(false);

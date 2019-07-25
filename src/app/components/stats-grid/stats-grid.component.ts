@@ -11,13 +11,20 @@ export class StatsGridComponent implements OnInit {
   uniqueCountries = [];
   northernmostLoc: any;
   southernmostLoc: any;
+  allStatsData: any;
   private uniqueCountriesSubscription: Subscription;
-  private northernmostLocSubscription: Subscription;
-  private southernmostLocSubscription: Subscription;
+  private allStatsSubscription: Subscription;
 
   constructor(private locationsService: LocationsService) {}
 
   ngOnInit() {
+    this.allStatsData = this.locationsService.statsData;
+    this.allStatsSubscription = this.locationsService.locationsUpdated.subscribe(
+      () => {
+        this.allStatsData = this.locationsService.statsData;
+      }
+    );
+
     this.uniqueCountries = this.locationsService.uniqueCountries;
     this.uniqueCountriesSubscription = this.locationsService.locationsUpdated.subscribe(
       () => {
@@ -25,21 +32,13 @@ export class StatsGridComponent implements OnInit {
       }
     );
 
-    this.northernmostLoc = this.locationsService.northernMostLocation;
-    this.northernmostLocSubscription = this.locationsService.locationsUpdated.subscribe(
-      () => {
-        this.northernmostLoc = this.locationsService.northernMostLocation;
-      }
-    );
-
-    this.southernmostLoc = this.locationsService.southernMostLocation;
-    this.southernmostLocSubscription = this.locationsService.locationsUpdated.subscribe(
-      () => {
-        this.southernmostLoc = this.locationsService.southernMostLocation;
-      }
-    );
+  
   }
 
+
+  //test() {
+   // console.log(this.allStatsData)
+  //}
   //getUniqueCountries() {
    // console.log("function itself works");
     //console.log([...this.uniqueCountries]);

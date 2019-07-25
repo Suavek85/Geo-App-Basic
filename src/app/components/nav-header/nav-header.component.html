@@ -1,6 +1,6 @@
 <!-- NAV HEADER -->
 <mat-toolbar color="primary">
-    <a style="color: white" routerLink="/">Geo App Basic {{ appName }}</a>
+    <a style="color: white" routerLink="/"><p>Geo App Basic<sup> Beta</sup></p></a>
 
     <!-- TOGGLE SIDE MENU BUTTON -->
     <div fxHide.gt-xs>
@@ -22,16 +22,16 @@
       <li>
         <button mat-button><a routerLink="/">Home</a></button>
       </li>
-      <li>
+      <li *ngIf="isAuth">
         <button mat-button><a routerLink="/dashboard">Dashboard</a></button>
       </li>
-      <li>
+      <li *ngIf="!isAuth">
         <button mat-button><a routerLink="/stepper">Get Started</a></button>
       </li>
-      <li>
+      <li *ngIf="!isAuth">
         <button mat-button><a routerLink="/signin">Sign In</a></button>
       </li>
-      <li>
+      <li *ngIf="isAuth">
         <button mat-button><a routerLink="/">Sign Out</a></button>
       </li>
     </ul>
