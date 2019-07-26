@@ -1,20 +1,20 @@
-import { AuthService } from "./../auth/auth.service";
+import { AuthService } from "./../../auth/auth.service";
+import { Subscription } from "rxjs/Subscription";
 import {
   Component,
   OnInit,
-  OnDestroy,
   EventEmitter,
-  Output
+  Output,
+  OnDestroy
 } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
 
 @Component({
-  selector: "app-nav-side-list",
-  templateUrl: "./nav-side-list.component.html",
-  styleUrls: ["./nav-side-list.component.css"]
+  selector: "app-nav-header",
+  templateUrl: "./nav-header.component.html",
+  styleUrls: ["./nav-header.component.css"]
 })
-export class NavSideListComponent implements OnInit, OnDestroy {
-  @Output() closeSideNav = new EventEmitter<void>();
+export class NavHeaderComponent implements OnInit, OnDestroy {
+  @Output() sideNavToggle = new EventEmitter<void>();
   isAuth: boolean = false;
   authSubscription: Subscription;
 
@@ -28,13 +28,12 @@ export class NavSideListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onClose() {
-    this.closeSideNav.emit();
+  onSignOut() {
+    this.authService.signOut();
   }
 
-  onSignOut() {
-    this.onClose();
-    this.authService.signOut();
+  onToggleSidenav() {
+    this.sideNavToggle.emit();
   }
 
   ngOnDestroy() {

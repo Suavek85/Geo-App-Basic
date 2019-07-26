@@ -10,6 +10,7 @@ export class LocationsService  {
     uniqueCountries: [],
     northernmostLocation: 'None',
     southernmostLocation: 'None',
+    westernmostLocation: 'None',
   }]
   locationsUpdated = new Subject();
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
@@ -19,10 +20,10 @@ export class LocationsService  {
   country: any;
   newLocationEl: any;
   newHomeEl: any;
-  uniqueCountries: any;
-  northernMostLocation: any = "None"
-  southernMostLocation: any = "None"
-  
+  uniqueCountries: string[];
+  northernMostLocation: string = "None"
+  southernMostLocation: string = "None"
+  westernMostLocation: string = "None"
 
   getLocations() {
     return [...this.locations];
@@ -102,11 +103,14 @@ export class LocationsService  {
     this.getUniqueCountries();
     this.getNorthernmostLocation();
     this.getSouthernmostLocation();
+    this.getWesternnmostLocation()
     this.statsData = [{
       uniqueCountries: this.uniqueCountries,
       northernmostLocation: this.northernMostLocation,
       southernmostLocation: this.southernMostLocation,
+      westernmostLocation: this.westernMostLocation
     }]
+    console.log(this.statsData)
   }
 
   private getUniqueCountries() {
@@ -118,16 +122,23 @@ export class LocationsService  {
   }
 
   private getNorthernmostLocation() {
-    const northObj = this.locations.reduce(function(prev, current) {
+    const northObj = this.locations.reduce((prev, current) => {
       return prev.la > current.la ? prev : current;
     });
     this.northernMostLocation = northObj.loc;
   }
 
   private getSouthernmostLocation() {
-    const southObj = this.locations.reduce(function(prev, current) {
+    const southObj = this.locations.reduce((prev, current) => {
       return prev.la < current.la ? prev : current;
     });
     this.southernMostLocation = southObj.loc;
+  }
+
+  private getWesternnmostLocation() {
+    const westObj = this.locations.reduce((prev, current) => {
+      return prev.lo < current.lo ? prev : current;
+    });
+    this.westernMostLocation = westObj.loc;
   }
 }

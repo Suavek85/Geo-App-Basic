@@ -24,8 +24,8 @@ import { SignupComponent } from './components/auth/sign-up/sign-up.component';
 import { LocationItem } from './components/locations/location-item/location-item.component';
 import { RemoveLocationAlert } from './components/locations/location-item/remove-alert.component';
 
-import { NavHeaderComponent } from "./components/nav-header/nav-header.component";
-import { NavSideListComponent } from "./components/nav-side-list/nav-side-list.component";
+import { NavHeaderComponent } from "./components/navigation/nav-header/nav-header.component";
+import { NavSideListComponent } from "./components/navigation/nav-side-list/nav-side-list.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
 import { LocationHomeComponent } from "./components/locations/location-home/location-home.component";
