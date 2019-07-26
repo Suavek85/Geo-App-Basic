@@ -1,11 +1,6 @@
 export class LocationDataElement {
-  loc: string;
-  la: number;
-  lo: number;
-  address: string;
-  country: string;
   key: string;
-  constructor(loc: string, la: number, lo: number, address: string, country: string) {
+  constructor(public loc: string, public la: number, public lo: number, public address: string, public country: string) {
     this.loc = loc;
     this.la = la;
     this.lo = lo;
