@@ -1,17 +1,19 @@
 import { Subject } from "rxjs";
 import { LocationDataElement } from "./data.model";
-import { StatsData} from "./stats.model";
+import { StatsData } from "./stats.model";
 
-
-export class LocationsService  {
+export class LocationsService {
   private locations = [];
   private homes = [];
-  public statsData: StatsData[] = [{
-    uniqueCountries: [],
-    northernmostLocation: 'None',
-    southernmostLocation: 'None',
-    westernmostLocation: 'None',
-  }]
+  public statsData: StatsData[] = [
+    {
+      uniqueCountries: [],
+      northernmostLocation: "None",
+      southernmostLocation: "None",
+      westernmostLocation: "None",
+      easternmostLocation: "None"
+    }
+  ];
   locationsUpdated = new Subject();
   key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
   long: number;
@@ -21,9 +23,11 @@ export class LocationsService  {
   newLocationEl: any;
   newHomeEl: any;
   uniqueCountries: string[];
-  northernMostLocation: string = "None"
-  southernMostLocation: string = "None"
-  westernMostLocation: string = "None"
+  northernMostLocation: string = "None";
+  southernMostLocation: string = "None";
+  westernMostLocation: string = "None";
+  easternMostLocation: string = "None";
+  closestLocation: string = "None";
 
   getLocations() {
     return [...this.locations];
@@ -32,7 +36,6 @@ export class LocationsService  {
   getHomes() {
     return [...this.homes];
   }
-
 
   deleteLocation(locationName: string) {
     this.locations = this.locations.filter(l => l !== locationName);
@@ -62,6 +65,7 @@ export class LocationsService  {
         );
         this.locations.push(this.newLocationEl);
         this.getAllStats();
+        this.getClosestToHome();
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong location name"));
@@ -83,6 +87,7 @@ export class LocationsService  {
         );
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
+
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));
@@ -103,14 +108,17 @@ export class LocationsService  {
     this.getUniqueCountries();
     this.getNorthernmostLocation();
     this.getSouthernmostLocation();
-    this.getWesternnmostLocation()
-    this.statsData = [{
-      uniqueCountries: this.uniqueCountries,
-      northernmostLocation: this.northernMostLocation,
-      southernmostLocation: this.southernMostLocation,
-      westernmostLocation: this.westernMostLocation
-    }]
-    console.log(this.statsData)
+    this.getWesternnmostLocation();
+    this.getEasternnmostLocation();
+    this.statsData = [
+      {
+        uniqueCountries: this.uniqueCountries,
+        northernmostLocation: this.northernMostLocation,
+        southernmostLocation: this.southernMostLocation,
+        westernmostLocation: this.westernMostLocation,
+        easternmostLocation: this.easternMostLocation
+      }
+    ];
   }
 
   private getUniqueCountries() {
@@ -140,5 +148,82 @@ export class LocationsService  {
       return prev.lo < current.lo ? prev : current;
     });
     this.westernMostLocation = westObj.loc;
+  }
+
+  private getEasternnmostLocation() {
+    const eastObj = this.locations.reduce((prev, current) => {
+      return prev.lo > current.lo ? prev : current;
+    });
+    this.easternMostLocation = eastObj.loc;
+  }
+
+  private getClosestToHome() {
+    const firstLa = this.locations[0].la;
+    const firstLo = this.locations[0].lo;
+
+    if (this.homes.length) {
+      var homeLa = this.homes[0].la;
+      var homeLo = this.homes[0].lo;
+    } else {
+      return;
+    }
+
+    var x = this.distanceInKmBetweenEarthCoordinates(
+      firstLa,
+      firstLo,
+      homeLa,
+      homeLo
+    );
+    let arrDis = []
+
+    this.locations.forEach((el, i) => {
+      let u = {
+        index: i,
+        name: el.address,
+        distance: this.distanceInKmBetweenEarthCoordinates(
+          el.la,
+          el.lo,
+          homeLa,
+          homeLo
+        )
+      };
+      arrDis.push(u);
+    
+    });
+
+    console.log(x);
+    console.log(arrDis)
+
+    const closesObj = this.arrDis.reduce((prev, current) => {
+      return prev.la < current.la ? prev : current;
+    });
+    this.closestLocation = closesObj.name;
+
+
+  }
+
+  private degreesToRadians(degrees: any): number {
+    return (degrees * Math.PI) / 180;
+  }
+
+  private distanceInKmBetweenEarthCoordinates(
+    lat1: any,
+    lon1: any,
+    lat2: any,
+    lon2: any
+  ) {
+    var earthRadiusKm = 6371;
+
+    var dLat = this.degreesToRadians(lat2 - lat1);
+    var dLon = this.degreesToRadians(lon2 - lon1);
+
+    lat1 = this.degreesToRadians(lat1);
+    lat2 = this.degreesToRadians(lat2);
+
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return earthRadiusKm * c;
   }
 }

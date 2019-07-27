@@ -8,19 +8,19 @@ import { AuthService } from '../auth.service';
   styleUrls: ["./sign-up.component.css"]
 })
 export class SignupComponent implements OnInit {
-  isLinear = true;
-  secondFormGroup: FormGroup;
+  //isLinear = true;
+  //secondFormGroup: FormGroup;
   maxDate;
 
-  constructor(private _formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor( private authService: AuthService) {}
 
   ngOnInit() {
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
-    this.secondFormGroup = this._formBuilder.group({
-        secondCtrl: ["", [Validators.minLength(3),Validators.maxLength(12) ]]
-      }
-    );
+    //this.secondFormGroup = this._formBuilder.group({
+        //secondCtrl: ["", [Validators.minLength(3),//Validators.maxLength(12) ]]
+     // }
+    //);
   }
 
   onSubmit(form: NgForm) {

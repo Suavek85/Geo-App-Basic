@@ -3,4 +3,5 @@ export interface StatsData {
     northernmostLocation: string;
     southernmostLocation: string;
     westernmostLocation: string;
+    easternmostLocation: string;
   }
