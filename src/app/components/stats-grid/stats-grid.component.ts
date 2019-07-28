@@ -10,8 +10,10 @@ import { Subscription } from "rxjs";
 export class StatsGridComponent implements OnInit {
   uniqueCountries = [];
   allStatsData: any;
+  closestToHome: string = 'None';
   private uniqueCountriesSubscription: Subscription;
   private allStatsSubscription: Subscription;
+  private closestToHomeSubscription: Subscription;
 
   constructor(private locationsService: LocationsService) {}
 
@@ -27,6 +29,13 @@ export class StatsGridComponent implements OnInit {
     this.uniqueCountriesSubscription = this.locationsService.locationsUpdated.subscribe(
       () => {
         this.uniqueCountries = this.locationsService.uniqueCountries;
+      }
+    );
+
+    this.closestToHome = this.locationsService.closestLocation;
+    this.closestToHomeSubscription = this.locationsService.locationsUpdated.subscribe(
+      () => {
+        this.closestToHome = this.locationsService.closestLocation;
       }
     );
   }

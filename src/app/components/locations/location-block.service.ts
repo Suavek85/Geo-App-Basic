@@ -28,6 +28,7 @@ export class LocationsService {
   westernMostLocation: string = "None";
   easternMostLocation: string = "None";
   closestLocation: string = "None";
+  arrDis: any = [];
 
   getLocations() {
     return [...this.locations];
@@ -104,6 +105,8 @@ export class LocationsService {
 
   //STATS PRIVATE METHODS
 
+  //MAIN
+
   private getAllStats() {
     this.getUniqueCountries();
     this.getNorthernmostLocation();
@@ -120,6 +123,8 @@ export class LocationsService {
       }
     ];
   }
+
+  //HELPERS
 
   private getUniqueCountries() {
     const allCountries = [];
@@ -158,48 +163,27 @@ export class LocationsService {
   }
 
   private getClosestToHome() {
-    const firstLa = this.locations[0].la;
-    const firstLo = this.locations[0].lo;
-
-    if (this.homes.length) {
-      var homeLa = this.homes[0].la;
-      var homeLo = this.homes[0].lo;
-    } else {
-      return;
-    }
-
-    var x = this.distanceInKmBetweenEarthCoordinates(
-      firstLa,
-      firstLo,
-      homeLa,
-      homeLo
-    );
-    let arrDis = []
-
-    this.locations.forEach((el, i) => {
-      let u = {
-        index: i,
-        name: el.address,
+    if (this.homes.length && this.locations.length) {
+      const locationDistanceItem = {
+        index: this.locations.length - 1,
+        name: this.locations[this.locations.length - 1].address,
         distance: this.distanceInKmBetweenEarthCoordinates(
-          el.la,
-          el.lo,
-          homeLa,
-          homeLo
+          this.locations[this.locations.length - 1].la,
+          this.locations[this.locations.length - 1].lo,
+          this.homes[0].la,
+          this.homes[0].lo
         )
       };
-      arrDis.push(u);
-    
-    });
 
-    console.log(x);
-    console.log(arrDis)
+      this.arrDis.push(locationDistanceItem);
 
-    const closesObj = this.arrDis.reduce((prev, current) => {
-      return prev.la < current.la ? prev : current;
-    });
-    this.closestLocation = closesObj.name;
-
-
+      const closesObj = this.arrDis.reduce((prev, current) => {
+        return prev.distance < current.distance ? prev : current;
+      });
+      this.closestLocation = `${closesObj.name} away ${Math.round(
+        closesObj.distance
+      )} km in straight line from home location`;
+    }
   }
 
   private degreesToRadians(degrees: any): number {
