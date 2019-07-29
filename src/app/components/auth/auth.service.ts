@@ -10,17 +10,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthService {
   
   authChange = new Subject<boolean>();
-  private user: User;
+  //private user: User;
+  private isAuthenticated: boolean = false;
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {
 
   }
 
   registerUser(authData: AuthData) {
-    //this.user = {
-     // email: authData.email,
-      //userId: Math.round(Math.random() * 1000).toString()
-   // };
+   
    this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password)
    .then(result => {
      console.log(result);
@@ -46,20 +44,18 @@ export class AuthService {
   }
 
   signOut() {
-    this.user = null;
     this.authChange.next(false);
     this.router.navigate(['/signin'])
+    this.isAuthenticated =  false;
   }
 
-  getUser() {
-    return { ...this.user };
-  }
 
   isAuth() {
-    return this.user != null;
+    return this.isAuthenticated;
   }
 
   private authSuccessfully() {
+    this.isAuthenticated =  true;
     this.authChange.next(true);
     this.router.navigate(['/dashboard'])
   }
