@@ -1,6 +1,9 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { LocationsService } from "../location-block.service";
 import { Subscription } from "rxjs";
+import { Observable } from "rxjs";
+
 
 @Component({
   selector: "location-block",
@@ -14,7 +17,8 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
   locationName: string = "";
   homeName: string = "";
   locations = [];
-  homes = [];
+  //homes = [];
+  homes: Observable<any>;
   long: number;
   lat: number;
   private locationsSubscription: Subscription;
@@ -22,6 +26,7 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
 
   constructor(
     private locationsService: LocationsService,
+    private db: AngularFirestore,
   ) {}
 
   ngOnInit() {
@@ -31,12 +36,19 @@ export class LocationBlockComponent implements OnInit, OnDestroy {
         this.locations = this.locationsService.getLocations();
       }
     );
-    this.homes = this.locationsService.getHomes();
-    this.homesSubscription = this.locationsService.locationsUpdated.subscribe(
-      () => {
-        this.homes = this.locationsService.getHomes();
-      }
-    );
+
+    this.homes = this.db.collection('homes').valueChanges()
+    
+    //.subscribe( result => {
+      //console.log(result);
+    //} )
+
+    //this.homes = this.locationsService.getHomes();
+    //this.homesSubscription = this.locationsService.locationsUpdated.subscribe(
+      //() => {
+       // this.homes = this.locationsService.getHomes();
+      //}
+    //);
   }
 
   addLocation() {

@@ -8,7 +8,7 @@
       <input matInput type="text" [(ngModel)]="homeName" placeholder="Enter city name" />
     </mat-form-field>
     <button class="button__add-locations" mat-flat-button color="accent" (click)="addHome()">Set home</button>
-    <app-location-home *ngFor="let home of homes" [homeObj]="home"></app-location-home>
+    <app-location-home *ngFor="let home of homes | async" [homeObj]="home"></app-location-home>
   </mat-card>
 
   <!-- ADDING LOCATIONS-->

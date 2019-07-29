@@ -9,6 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 
 //PROVIDERS
 import { LocationsService } from "./components/locations/location-block.service";
@@ -30,6 +34,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
 import { LocationHomeComponent } from "./components/locations/location-home/location-home.component";
 import { StatsGridComponent } from "./components/stats-grid/stats-grid.component";
+
 
 @NgModule({
   declarations: [
@@ -57,7 +62,9 @@ import { StatsGridComponent } from "./components/stats-grid/stats-grid.component
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule 
   ],
   providers: [LocationsService, AuthService],
   bootstrap: [AppComponent],
