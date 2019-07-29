@@ -62,7 +62,8 @@ export class LocationsService {
           this.lat,
           this.long,
           this.address,
-          this.country
+          this.country,
+          this.key
         );
         this.locations.push(this.newLocationEl);
         this.getAllStats();
@@ -84,7 +85,8 @@ export class LocationsService {
           this.lat,
           this.long,
           this.address,
-          this.country
+          this.country,
+          this.key
         );
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
