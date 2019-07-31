@@ -1,6 +1,6 @@
-# Geo App
+# Geo App Basic
 
-> Angular desktop app for calculating distances between your locations and more. JUST STARTED, IN PROGRESS.
+> Angular desktop and mobile app for calculating distances between your locations and more. JUST STARTED, IN PROGRESS.
 
 ## Table of Contents
 
@@ -16,28 +16,30 @@
 
 ## General info
 
-Angular desktop app built with Angular Material Design.
+Angular app built with Angular Material Design.
+
+Uses Microsoft’s Bing Maps API.
 
 My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch. ![🔨](https://mail.google.com/mail/e/1f528)
 
 ## Features
 
-- signin/signup (using both reactive and template driven forms),
+- signin/signup (using both reactive and template driven forms) using Firebase + Angularfire,
 
-- adding locations, calculating distances to all locations from the current location etc.
+- user authentication with route guards,
 
-- will use Microsoft’s Bing Maps API.
+- adding home locations and dependant locations to calculate various stats such as: northernmost/southernmost location, closest location + distance to the home location etc,
+
+- displays Bing map for each location added
 
 
 ## Technologies
 
-- HTML, CSS, Typescript.
+- HTML, CSS, Typescript, Angular.
 
 ## Issues
 
-- desktop and mobile,
-
-- IN PROGRESS.
+- JUST STARTED, IN PROGRESS.
 
 ## Status
 
