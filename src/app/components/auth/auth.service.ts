@@ -30,10 +30,6 @@ export class AuthService {
   }
 
   signIn(authData: AuthData) {
-   // this.user = {
-     // email: authData.email,
-     // userId: Math.round(Math.random() * 1000).toString()
-    //};
     this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password)
    .then(result => {
      console.log(result);

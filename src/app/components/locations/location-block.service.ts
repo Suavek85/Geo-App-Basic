@@ -1,6 +1,7 @@
 import { Subject } from "rxjs";
 import { LocationDataElement } from "./data.model";
 import { StatsData } from "./stats.model";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 export class LocationsService {
   private locations = [];
@@ -15,7 +16,8 @@ export class LocationsService {
     }
   ];
   locationsUpdated = new Subject();
-  key = "AjF525jJkMH_mNXo4Aov0_S_jIAYZubFnMxP3AIg4jMkjaqpWL4Hz9SG6BMDUESC";
+  key: any;
+  keyAPI: any = this.db.collection("bingkey").doc("mYRsUMqj2QR0DE5LPAbl").valueChanges().subscribe(result => this.key = result)
   long: number;
   lat: number;
   address: any;
@@ -29,6 +31,8 @@ export class LocationsService {
   easternMostLocation: string = "None";
   closestLocation: string = "None";
   arrDis: any = [];
+
+  constructor(private db: AngularFirestore) {}
 
   getLocations() {
     return [...this.locations];
@@ -51,7 +55,7 @@ export class LocationsService {
   }
 
   getAPI(locationName: string) {
-    fetch(this.apiURL(locationName, this.key))
+    fetch(this.apiURL(locationName, this.key.key))
       .then(function(response) {
         return response.json();
       })
@@ -74,7 +78,7 @@ export class LocationsService {
   }
 
   getHomeAPI(homeName: string) {
-    fetch(this.apiURL(homeName, this.key))
+    fetch(this.apiURL(homeName, this.key.key))
       .then(function(response) {
         return response.json();
       })
@@ -86,7 +90,7 @@ export class LocationsService {
           this.long,
           this.address,
           this.country,
-          this.key
+          this.key.key
         );
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
