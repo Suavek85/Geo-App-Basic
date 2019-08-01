@@ -20,6 +20,8 @@ Angular app built with Angular Material Design.
 
 Uses Microsoft’s Bing Maps API.
 
+Hosted on Firebase: https://geo-app-basic.firebaseapp.com
+
 My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch. ![🔨](https://mail.google.com/mail/e/1f528)
 
 ## Features

@@ -50,7 +50,7 @@ export class LocationsService {
   //API METHODS
 
   apiURL(input, key) {
-    return `http://dev.virtualearth.net/REST/v1/Locations?query=${input}
+    return `https://dev.virtualearth.net/REST/v1/Locations?query=${input}
     &key=${key}`;
   }
 
