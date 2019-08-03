@@ -22,7 +22,7 @@ export class LocationItem implements OnInit {
     //this.locationClicked.emit();
     const dialogRef = this.dialog.open(RemoveLocationAlert, {data: {locationClicked: this.locationObj.loc}});
     dialogRef.afterClosed().subscribe(result => {
-     result? this.locationsService.deleteLocation(this.locationObj) : null
+     result? this.locationsService.deleteLocation(this.locationObj.loc) : null
     })
   
   }

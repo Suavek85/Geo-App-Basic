@@ -1,41 +1,44 @@
-<mat-card>
-  <section class="signup-form" fxLayout="column" fxLayoutAlign="space-around center" style="margin-bottom: 50px">
-    <h1>Sign up</h1>
-    <form class="form-wrapper" fxLayout="column" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    
-      <!-- EMAIL-->
-      <mat-form-field>
-        <input matInput type="email" placeholder="Your email" ngModel name="email" #emInput="ngModel" required />
-        <mat-error *ngIf="emInput.hasError('required')">Field must not be empty.</mat-error>
-        <mat-error *ngIf="!emInput.hasError('required')">Email format is invalid.</mat-error>
-      </mat-form-field>
+<div fxLayout="column" fxLayoutAlign="center center" class="authorization-wrapper">
+  <mat-card>
+    <section class="signup-form" fxLayout="column" fxLayoutAlign="space-around center" style="margin-bottom: 50px">
+      <h1>Sign up</h1>
+      <form class="form-wrapper" fxLayout="column" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
 
-      <!-- PASSWORD-->
-      <mat-form-field hintLabel="Minimum 6 characters">
-        <input matInput type="password" placeholder="Your password" ngModel name="password" minlength="6"
-          #pwInput="ngModel" required />
-        <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
-        <mat-error>Has to be minimum 6 characters long</mat-error>
-      </mat-form-field>
+        <!-- EMAIL-->
+        <mat-form-field>
+          <input matInput type="email" placeholder="Your email" ngModel name="email" #emInput="ngModel" required />
+          <mat-error *ngIf="emInput.hasError('required')">Field must not be empty.</mat-error>
+          <mat-error *ngIf="!emInput.hasError('required')">Email format is invalid.</mat-error>
+        </mat-form-field>
 
-      <!-- DATEPICKER -->
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Your birthdate" ngModel name="birthday"
-          required />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+        <!-- PASSWORD-->
+        <mat-form-field hintLabel="Minimum 6 characters">
+          <input matInput type="password" placeholder="Your password" ngModel name="password" minlength="6"
+            #pwInput="ngModel" required />
+          <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+          <mat-error>Has to be minimum 6 characters long</mat-error>
+        </mat-form-field>
 
-      <!--CHECK BOX-->
-      <mat-checkbox ngModel name="agree" color="primary" required>Agree to terms</mat-checkbox>
+        <!-- DATEPICKER -->
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Your birthdate" ngModel name="birthday"
+            required />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-      <!--SUBMIT BUTTON-->
-      <button class="button__submit" type="submit" mat-flat-button color="primary"
-        [disabled]="f.invalid">
-        Submit
+        <!--CHECK BOX-->
+        <mat-checkbox ngModel name="agree" color="primary" required>Agree to Geo App terms</mat-checkbox>
+
+        <!--SUBMIT BUTTON-->
+        <button class="button__submit" type="submit" mat-flat-button color="primary" [disabled]="f.invalid">
+          Submit
+        </button>
+      </form>
+      <p>Already a user?</p>
+      <button mat-raised-button color="accent">
+        <a routerLink="/signin">Sign in</a>
       </button>
-     
-    </form>
-  </section>
-
-</mat-card>
+    </section>
+  </mat-card>
+</div>

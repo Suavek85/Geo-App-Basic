@@ -17,7 +17,11 @@ export class LocationsService {
   ];
   locationsUpdated = new Subject();
   key: any;
-  keyAPI: any = this.db.collection("bingkey").doc("mYRsUMqj2QR0DE5LPAbl").valueChanges().subscribe(result => this.key = result)
+  keyAPI: any = this.db
+    .collection("bingkey")
+    .doc("mYRsUMqj2QR0DE5LPAbl")
+    .valueChanges()
+    .subscribe(result => (this.key = result));
   long: number;
   lat: number;
   address: any;
@@ -43,7 +47,12 @@ export class LocationsService {
   }
 
   deleteLocation(locationName: string) {
-    this.locations = this.locations.filter(l => l !== locationName);
+    this.locations = this.locations.filter(
+      locationObj => locationObj.loc !== locationName
+    );
+    //this.locationsUpdated.next();
+    this.getAllStats();
+    //this.getClosestToHome();
     this.locationsUpdated.next();
   }
 
@@ -114,20 +123,32 @@ export class LocationsService {
   //MAIN
 
   private getAllStats() {
-    this.getUniqueCountries();
-    this.getNorthernmostLocation();
-    this.getSouthernmostLocation();
-    this.getWesternnmostLocation();
-    this.getEasternnmostLocation();
-    this.statsData = [
-      {
-        uniqueCountries: this.uniqueCountries,
-        northernmostLocation: this.northernMostLocation,
-        southernmostLocation: this.southernMostLocation,
-        westernmostLocation: this.westernMostLocation,
-        easternmostLocation: this.easternMostLocation
-      }
-    ];
+    if (!this.locations.length) {
+      this.statsData = [
+        {
+          uniqueCountries: [],
+          northernmostLocation: "None",
+          southernmostLocation: "None",
+          westernmostLocation: "None",
+          easternmostLocation: "None",
+        },
+      ];
+    } else {
+      this.getUniqueCountries();
+      this.getNorthernmostLocation();
+      this.getSouthernmostLocation();
+      this.getWesternnmostLocation();
+      this.getEasternnmostLocation();
+      this.statsData = [
+        {
+          uniqueCountries: this.uniqueCountries,
+          northernmostLocation: this.northernMostLocation,
+          southernmostLocation: this.southernMostLocation,
+          westernmostLocation: this.westernMostLocation,
+          easternmostLocation: this.easternMostLocation
+        }
+      ];
+    }
   }
 
   //HELPERS

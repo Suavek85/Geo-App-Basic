@@ -1,7 +1,9 @@
+.authorization-wrapper {
+  height: calc(100vh - 140px);
+}
+
 mat-card {
   width: 350px;
-  margin: 50px auto auto auto;
-  height: auto;
 }
 
 a {

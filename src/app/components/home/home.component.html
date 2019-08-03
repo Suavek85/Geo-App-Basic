@@ -1,13 +1,14 @@
-<div class="home-wrapper">
-    <div fxLayout="column" fxLayoutAlign="center center" class="home-wrapper__inside">
+<div class="home-wrapper" fxLayout="column" fxLayoutAlign="end start">
+    <div fxLayout="column" fxLayoutAlign="space-evenly start" class="home-wrapper__inside">
         <h1 class="mat-display-3">Hello</h1>
-        <h2 class="mat-h2">Pick one of the options:</h2>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
+        <h2 class="mat-h2">Geo App, find routes and caluclate distances between your locations.</h2>
+        <h2 class="mat-h2">Get started by:</h2>
+        <div fxLayout="row" fxLayoutAlign="space-evenly start">
             <button style="margin-right: 30px" mat-raised-button color="primary">
-                <a routerLink="/stepper">Get started</a>
+                <a routerLink="/signup">Signing up</a>
             </button>
             <button mat-raised-button color="accent">
-                <a routerLink="/signin">Sign in</a>
+                <a routerLink="/signin">Signing in</a>
             </button>
         </div>
     </div>
