@@ -1,5 +1,4 @@
 export class LocationDataElement {
- 
   constructor(public loc: string, public la: number, public lo: number, public address: string, public country: string, public key: string) {
     this.loc = loc;
     this.la = la;
@@ -8,5 +7,6 @@ export class LocationDataElement {
     this.country = country;
     this.key = key;
   }
+  
 }
 

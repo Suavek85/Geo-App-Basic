@@ -4,8 +4,7 @@ import { StatsData } from "./stats.model";
 import { AngularFirestore } from "@angular/fire/firestore";
 
 export class LocationsService {
-  private locations = [];
-  private homes = [];
+  locationsUpdated = new Subject();
   public statsData: StatsData[] = [
     {
       uniqueCountries: [],
@@ -15,13 +14,14 @@ export class LocationsService {
       easternmostLocation: "None"
     }
   ];
-  locationsUpdated = new Subject();
   key: any;
   keyAPI: any = this.db
     .collection("bingkey")
     .doc("mYRsUMqj2QR0DE5LPAbl")
     .valueChanges()
     .subscribe(result => (this.key = result));
+  private locations = [];
+  private homes = [];
   long: number;
   lat: number;
   address: any;
@@ -50,9 +50,7 @@ export class LocationsService {
     this.locations = this.locations.filter(
       locationObj => locationObj.loc !== locationName
     );
-    //this.locationsUpdated.next();
     this.getAllStats();
-    //this.getClosestToHome();
     this.locationsUpdated.next();
   }
 
@@ -70,14 +68,7 @@ export class LocationsService {
       })
       .then(data => {
         this.setAPIData(data);
-        this.newLocationEl = new LocationDataElement(
-          locationName,
-          this.lat,
-          this.long,
-          this.address,
-          this.country,
-          this.key
-        );
+        this.newLocationEl = this.createLocationObj(locationName);
         this.locations.push(this.newLocationEl);
         this.getAllStats();
         this.getClosestToHome();
@@ -93,22 +84,15 @@ export class LocationsService {
       })
       .then(data => {
         this.setAPIData(data);
-        this.newHomeEl = new LocationDataElement(
-          homeName,
-          this.lat,
-          this.long,
-          this.address,
-          this.country,
-          this.key.key
-        );
+        this.newHomeEl = this.createLocationObj(homeName);
         this.homes.length ? this.homes.splice(-1, 1) : null;
         this.homes.push(this.newHomeEl);
-
         this.locationsUpdated.next();
       })
       .catch(error => window.alert("Wrong home name"));
   }
 
+ 
   setAPIData(data: any) {
     this.long =
       data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
@@ -116,6 +100,19 @@ export class LocationsService {
       data.resourceSets[0].resources[0].geocodePoints[0].coordinates[0];
     this.address = data.resourceSets[0].resources[0].address.formattedAddress;
     this.country = data.resourceSets[0].resources[0].address.countryRegion;
+  }
+
+  //LOCATION OBJECT CONSTRUCTOR METHOD
+
+  createLocationObj(name: string) {
+    return new LocationDataElement(
+      name,
+      this.lat,
+      this.long,
+      this.address,
+      this.country,
+      this.key.key
+    );
   }
 
   //STATS PRIVATE METHODS
@@ -130,8 +127,8 @@ export class LocationsService {
           northernmostLocation: "None",
           southernmostLocation: "None",
           westernmostLocation: "None",
-          easternmostLocation: "None",
-        },
+          easternmostLocation: "None"
+        }
       ];
     } else {
       this.getUniqueCountries();
