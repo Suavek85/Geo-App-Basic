@@ -11,10 +11,12 @@ export class StatsGridComponent implements OnInit {
   uniqueCountries = [];
   allStatsData: any;
   closestToHome: string = 'None';
+  arrClosestDistances: string[];
   private uniqueCountriesSubscription: Subscription;
   private allStatsSubscription: Subscription;
   private closestToHomeSubscription: Subscription;
-
+  private arrClosestDistancesSubscription: Subscription;
+ 
   constructor(private locationsService: LocationsService) {}
 
   ngOnInit() {
@@ -38,5 +40,15 @@ export class StatsGridComponent implements OnInit {
         this.closestToHome = this.locationsService.closestLocation;
       }
     );
+    this.arrClosestDistances= this.locationsService.arrClosestDistances
+    this.arrClosestDistancesSubscription = this.locationsService.locationsUpdated.subscribe(
+      () => {
+        this.arrClosestDistances= this.locationsService.arrClosestDistances
+      }
+    );
+
   }
+ 
+
+  
 }

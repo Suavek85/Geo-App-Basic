@@ -1,5 +1,5 @@
 <mat-grid-list cols="3" gutterSize="40px" rowHeight="200px">
-  <mat-grid-tile>
+  <mat-grid-tile [rowspan]="2">
     <mat-grid-tile-header>
       <h3>Your unique countries:</h3>
     </mat-grid-tile-header>
@@ -19,37 +19,44 @@
   </mat-grid-tile>
 
   <mat-grid-tile>
-      <mat-grid-tile-header>
-          <h3>Southermost location:</h3>
-        </mat-grid-tile-header>
-        <mat-list *ngFor="let item of allStatsData">
-          <mat-list-item>{{ item.southernmostLocation }}</mat-list-item>
-        </mat-list>
+    <mat-grid-tile-header>
+      <h3>Southermost location:</h3>
+    </mat-grid-tile-header>
+    <mat-list *ngFor="let item of allStatsData">
+      <mat-list-item>{{ item.southernmostLocation }}</mat-list-item>
+    </mat-list>
   </mat-grid-tile>
 
   <mat-grid-tile>
-      <mat-grid-tile-header>
-          <h3>Easternmost location:</h3>
-        </mat-grid-tile-header>
-        <mat-list *ngFor="let item of allStatsData" >
-          <mat-list-item>{{ item.easternmostLocation }}</mat-list-item>
-        </mat-list>
+    <mat-grid-tile-header>
+      <h3>Easternmost location:</h3>
+    </mat-grid-tile-header>
+    <mat-list *ngFor="let item of allStatsData">
+      <mat-list-item>{{ item.easternmostLocation }}</mat-list-item>
+    </mat-list>
   </mat-grid-tile>
   <mat-grid-tile>
-      <mat-grid-tile-header>
-          <h3>Westernmost location</h3>
-        </mat-grid-tile-header>
-        <mat-list *ngFor="let item of allStatsData">
-          <mat-list-item>{{ item.westernmostLocation }}</mat-list-item>
-        </mat-list>
+    <mat-grid-tile-header>
+      <h3>Westernmost location</h3>
+    </mat-grid-tile-header>
+    <mat-list *ngFor="let item of allStatsData">
+      <mat-list-item>{{ item.westernmostLocation }}</mat-list-item>
+    </mat-list>
   </mat-grid-tile>
-  <mat-grid-tile>
-      <mat-grid-tile-header>
-          <h3>Closest to home location:</h3>
-        </mat-grid-tile-header>
-        <mat-list >
-          <mat-list-item>{{ closestToHome }}</mat-list-item>
-        </mat-list>
+  <mat-grid-tile style="background-color:lightpink" [colspan]="2">
+    <mat-grid-tile-header>
+      <h3>All distances to home:</h3>
+    </mat-grid-tile-header>
+    <mat-list *ngFor="let item of arrClosestDistances">
+      <mat-list-item>{{item.name}} - {{item.distance}}km away from home</mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile style="background-color:lightpink">
+    <mat-grid-tile-header>
+      <h3>Closest to home location:</h3>
+    </mat-grid-tile-header>
+    <mat-list>
+      <mat-list-item>{{ closestToHome }}</mat-list-item>
+    </mat-list>
   </mat-grid-tile>
 </mat-grid-list>
-

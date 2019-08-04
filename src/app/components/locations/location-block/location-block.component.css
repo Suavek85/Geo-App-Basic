@@ -1,4 +1,9 @@
 
+mat-card {
+    width: 500px; 
+    margin-top: 30px;
+}
+
 .button__add-locations {
     margin-left: 10px;
 }

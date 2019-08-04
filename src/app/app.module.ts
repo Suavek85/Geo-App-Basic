@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //PROVIDERS
 import { LocationsService } from "./components/locations/location-block.service";
 import { AuthService } from './components/auth/auth.service';
+import { ApiService } from './components/locations/api.service';
 
 //DECLARATIONS
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { SignInComponent } from "./components/auth/sign-in/sign-in.component";
 import { LocationHomeComponent } from "./components/locations/location-home/location-home.component";
 import { StatsGridComponent } from "./components/stats-grid/stats-grid.component";
+
 
 
 @NgModule({
@@ -68,7 +70,7 @@ import { StatsGridComponent } from "./components/stats-grid/stats-grid.component
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [LocationsService, AuthService],
+  providers: [LocationsService, AuthService, ApiService],
   bootstrap: [AppComponent],
   entryComponents: [RemoveLocationAlert]
 })

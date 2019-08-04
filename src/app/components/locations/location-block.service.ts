@@ -1,7 +1,7 @@
+import { ApiService } from "./api.service";
 import { Subject } from "rxjs";
 import { LocationDataElement } from "./data.model";
 import { StatsData } from "./stats.model";
-import { AngularFirestore } from "@angular/fire/firestore";
 
 export class LocationsService {
   locationsUpdated = new Subject();
@@ -14,12 +14,6 @@ export class LocationsService {
       easternmostLocation: "None"
     }
   ];
-  key: any;
-  keyAPI: any = this.db
-    .collection("bingkey")
-    .doc("mYRsUMqj2QR0DE5LPAbl")
-    .valueChanges()
-    .subscribe(result => (this.key = result));
   private locations = [];
   private homes = [];
   long: number;
@@ -34,9 +28,9 @@ export class LocationsService {
   westernMostLocation: string = "None";
   easternMostLocation: string = "None";
   closestLocation: string = "None";
-  arrDis: any = [];
+  arrClosestDistances: any = [];
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private api: ApiService) {}
 
   getLocations() {
     return [...this.locations];
@@ -54,15 +48,8 @@ export class LocationsService {
     this.locationsUpdated.next();
   }
 
-  //API METHODS
-
-  apiURL(input, key) {
-    return `https://dev.virtualearth.net/REST/v1/Locations?query=${input}
-    &key=${key}`;
-  }
-
-  getAPI(locationName: string) {
-    fetch(this.apiURL(locationName, this.key.key))
+  getLocationAPI(locationName: string) {
+    fetch(this.api.apiURL(locationName))
       .then(function(response) {
         return response.json();
       })
@@ -78,7 +65,7 @@ export class LocationsService {
   }
 
   getHomeAPI(homeName: string) {
-    fetch(this.apiURL(homeName, this.key.key))
+    fetch(this.api.apiURL(homeName))
       .then(function(response) {
         return response.json();
       })
@@ -92,7 +79,6 @@ export class LocationsService {
       .catch(error => window.alert("Wrong home name"));
   }
 
- 
   setAPIData(data: any) {
     this.long =
       data.resourceSets[0].resources[0].geocodePoints[0].coordinates[1];
@@ -102,7 +88,7 @@ export class LocationsService {
     this.country = data.resourceSets[0].resources[0].address.countryRegion;
   }
 
-  //LOCATION OBJECT CONSTRUCTOR METHOD
+  // -- LOCATION OBJECT CONSTRUCTOR METHOD --
 
   createLocationObj(name: string) {
     return new LocationDataElement(
@@ -111,44 +97,54 @@ export class LocationsService {
       this.long,
       this.address,
       this.country,
-      this.key.key
+      this.api.key.key
     );
   }
 
-  //STATS PRIVATE METHODS
+  // -- STATS METHODS --
 
   //MAIN
 
   private getAllStats() {
     if (!this.locations.length) {
-      this.statsData = [
-        {
-          uniqueCountries: [],
-          northernmostLocation: "None",
-          southernmostLocation: "None",
-          westernmostLocation: "None",
-          easternmostLocation: "None"
-        }
-      ];
+      this.setStatsData([], "None", "None", "None", "None");
     } else {
       this.getUniqueCountries();
       this.getNorthernmostLocation();
       this.getSouthernmostLocation();
       this.getWesternnmostLocation();
       this.getEasternnmostLocation();
-      this.statsData = [
-        {
-          uniqueCountries: this.uniqueCountries,
-          northernmostLocation: this.northernMostLocation,
-          southernmostLocation: this.southernMostLocation,
-          westernmostLocation: this.westernMostLocation,
-          easternmostLocation: this.easternMostLocation
-        }
-      ];
+      this.setStatsData(
+        this.uniqueCountries,
+        this.northernMostLocation,
+        this.southernMostLocation,
+        this.westernMostLocation,
+        this.easternMostLocation
+      );
     }
   }
 
-  //HELPERS
+  //SETTER
+
+  private setStatsData(
+    uniqueCountries: string[],
+    northernMostLocation: string,
+    southernMostLocation: string,
+    westernMostLocation: string,
+    easternMostLocation: string
+  ) {
+    this.statsData = [
+      {
+        uniqueCountries: uniqueCountries,
+        northernmostLocation: northernMostLocation,
+        southernmostLocation: southernMostLocation,
+        westernmostLocation: westernMostLocation,
+        easternmostLocation: easternMostLocation
+      }
+    ];
+  }
+
+  //INDIVIDUAL STATS
 
   private getUniqueCountries() {
     const allCountries = [];
@@ -186,6 +182,8 @@ export class LocationsService {
     this.easternMostLocation = eastObj.loc;
   }
 
+  //CLOSEST TO HOME STATS
+
   private getClosestToHome() {
     if (this.homes.length && this.locations.length) {
       const locationDistanceItem = {
@@ -198,15 +196,14 @@ export class LocationsService {
           this.homes[0].lo
         )
       };
+      this.arrClosestDistances.push(locationDistanceItem);
 
-      this.arrDis.push(locationDistanceItem);
-
-      const closesObj = this.arrDis.reduce((prev, current) => {
+      const closesObj = this.arrClosestDistances.reduce((prev, current) => {
         return prev.distance < current.distance ? prev : current;
       });
-      this.closestLocation = `${closesObj.name} away ${Math.round(
+      this.closestLocation = `${closesObj.name} away ${
         closesObj.distance
-      )} km in straight line from home location`;
+      } km in straight line from home location`;
     }
   }
 
@@ -232,6 +229,6 @@ export class LocationsService {
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return earthRadiusKm * c;
+    return Math.round(earthRadiusKm * c);
   }
 }
